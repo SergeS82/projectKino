@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">project_kino</string>
+    <string name="btn_menu">МЕНЮ</string>
+    <string name="btn_favorites">ИЗБРАННОЕ</string>
+    <string name="btn_later">ПОСМОТРЕТЬ ПОЗЖЕ</string>
+    <string name="btn_selections">ПОДБОРКИ</string>
+    <string name="btn_settings">НАСТРОЙКИ</string>
+    <string name="ownership">Постеры предоставлены https://www.movieposters.com</string>
 </resources>
