@@ -17,51 +17,51 @@
         app:cardElevation="15dp"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin">
+        android:layout_marginTop="@dimen/default_margin"
+        app:cardBackgroundColor="@color/purple_500">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/menu"
             >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent" >
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/killbillv1" />
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/pulpfiction" />
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/thehatefulleight" />
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/onceinhollywood" />
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/onceinhollywood" />
-        </LinearLayout>
+                android:baselineAligned="true"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/killbillv1" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/pulpfiction" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/onceinhollywood" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/thehatefulleight" />
+            </LinearLayout>
         </HorizontalScrollView>
     </androidx.cardview.widget.CardView>
     <FrameLayout
@@ -119,16 +119,18 @@
             android:text="@string/btn_settings" />
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:autoLink="web"
         android:clickable="true"
         android:text="@string/ownership"
         android:textSize="9sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UpMenu" />
 
