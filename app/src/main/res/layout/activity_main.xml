@@ -4,58 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/layout_container">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/up_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/background.menu_stile">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/up_menu"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="Search it!"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_menu"
+        style="@style/background.menu_stile"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_menu" />
     <androidx.cardview.widget.CardView
-        android:id="@+id/UpMenu"
+        android:id="@+id/up_preview"
         android:layout_width="match_parent"
         android:layout_height="@dimen/posters_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="15dp"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        app:cardBackgroundColor="@color/purple_500">
+        app:cardBackgroundColor="@color/purple_500"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/up_menu"
+        android:padding="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/menu"
-            >
-
+            style="@style/background">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:baselineAligned="true"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent">
-
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/image_view"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/killbillv1" />
+
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/image_view2"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/pulpfiction" />
+
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/image_view3"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/onceinhollywood" />
+
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/image_view4"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -64,75 +90,19 @@
             </LinearLayout>
         </HorizontalScrollView>
     </androidx.cardview.widget.CardView>
-    <FrameLayout
-        android:id="@+id/DownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/menu_height"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/menu"
-        />
-
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/DownMenu"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UpMenu"
-        >
-
-        <Button
-            android:id="@+id/btn_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/btn_menu" />
-
-        <Button
-            android:id="@+id/btn_favorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/btn_favorites" />
-
-        <Button
-            android:id="@+id/btn_late"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/btn_later" />
-
-        <Button
-            android:id="@+id/btn_selections"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/btn_selections" />
-
-        <Button
-            android:id="@+id/btn_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/btn_settings" />
-    </LinearLayout>
 
 
     <TextView
-        android:id="@+id/textView"
-
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="web"
         android:clickable="true"
         android:text="@string/ownership"
-        android:textSize="9sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UpMenu" />
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/up_preview"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/default_margin"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,19 +2,45 @@ package ru.anudx.project_kino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
-import ru.anudx.project_kino.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val bam = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bam.root)
-        bam.btnMenu.setOnClickListener { Toast.makeText(this, R.string.btn_menu, Toast.LENGTH_SHORT).show() }
-        bam.btnFavorites.setOnClickListener { Toast.makeText(this, R.string.btn_favorites, Toast.LENGTH_SHORT).show() }
-        bam.btnLate.setOnClickListener { Toast.makeText(this, R.string.btn_later, Toast.LENGTH_SHORT).show() }
-        bam.btnSelections.setOnClickListener { Toast.makeText(this, R.string.btn_selections, Toast.LENGTH_SHORT).show() }
-        bam.btnSettings.setOnClickListener { Toast.makeText(this, R.string.btn_settings, Toast.LENGTH_SHORT).show() }
+        setContentView(R.layout.activity_main)
+        initNavigation()
+    }
+
+    private fun initNavigation() {
+        val upMenu = findViewById<MaterialToolbar>(R.id.tool_bar)
+        val bottomMenu = findViewById<BottomNavigationView>(R.id.bottom_menu)
+        upMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.Settings -> {
+                    Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
+        bottomMenu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_favorites -> {
+                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.menu_later -> {
+                    Toast.makeText(this, "Смотреть позже", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.menu_library -> {
+                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

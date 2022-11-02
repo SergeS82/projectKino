@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name = "background">
+        <item name="android:background">@color/menu</item>
+    </style>
+    <style name="background.menu_stile">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="layout_container">
+        <item name="android:background">@drawable/corner_background</item>
+    </style>
+</resources>
