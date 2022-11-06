@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.anudx.project_kino.databinding.CardItemBinding
 
 class MainAdapter(val context: Context, val dataModel: ArrayList<DataModel>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>(){
-
+    //
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.card_item,parent,false)
@@ -33,8 +33,5 @@ class MainAdapter(val context: Context, val dataModel: ArrayList<DataModel>) : R
         val title = itemView.findViewById<TextView>(R.id.film_title)
         val descr = itemView.findViewById<TextView>(R.id.film_description)
     }
-
 }
-private fun LayoutInflater.inflate(cardItem: Int, itemView: View, b: Boolean) {
 
-}
