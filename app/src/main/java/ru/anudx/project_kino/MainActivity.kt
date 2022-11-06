@@ -2,6 +2,7 @@ package ru.anudx.project_kino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.Animation
 import android.widget.Toast
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
