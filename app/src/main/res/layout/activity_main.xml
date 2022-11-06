@@ -113,34 +113,62 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-        <ImageView
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
-            android:src="@drawable/killbillv1"
-            android:scaleType="centerCrop"/>
-        <ImageView
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/killbillv1"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
-            android:src="@drawable/onceinhollywood"
-            android:scaleType="centerCrop"/>
-        <ImageView
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pulpfiction"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
-            android:src="@drawable/pulpfiction"
-            android:scaleType="centerCrop"/>
-        <ImageView
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/onceinhollywood"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
-            android:src="@drawable/thehatefulleight"
-            android:scaleType="centerCrop"/>
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/thehatefulleight"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
     </GridLayout>
 
 
