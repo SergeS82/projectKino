@@ -98,87 +98,20 @@
         app:layout_constraintTop_toBottomOf="@+id/up_preview"
         android:gravity="center"
         android:layout_marginTop="@dimen/default_margin"/>
-    <GridLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/default_margin"
-        android:columnCount="2"
         android:orientation="horizontal"
-        android:useDefaultMargins="true"
         app:layout_constraintTop_toBottomOf="@+id/text_view"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layoutAnimation="@anim/anim_layout">
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/killbillv1"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/pulpfiction"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/onceinhollywood"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/thehatefulleight"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-    </GridLayout>
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
