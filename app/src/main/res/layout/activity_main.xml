@@ -46,10 +46,7 @@
         android:padding="@dimen/default_margin"
         android:layout_marginTop="@dimen/default_margin">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/background">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -58,37 +55,36 @@
                 app:layout_constraintTop_toTopOf="parent">
                 <ImageView
                     android:id="@+id/image_view"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.25"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/killbillv1" />
 
                 <ImageView
                     android:id="@+id/image_view2"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.25"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/pulpfiction" />
 
                 <ImageView
                     android:id="@+id/image_view3"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.25"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/onceinhollywood" />
 
                 <ImageView
                     android:id="@+id/image_view4"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.25"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/thehatefulleight" />
             </LinearLayout>
-        </HorizontalScrollView>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -112,19 +108,23 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        android:layoutAnimation="@anim/anim_layout">
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="15dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
+            app:cardBackgroundColor="@color/white_0"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/killbillv1"
                 android:scaleType="centerCrop"
+                android:clickable="true"
+                android:stateListAnimator="@animator/animator_press_button"
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -133,12 +133,15 @@
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
+            app:cardBackgroundColor="@color/white_0"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/pulpfiction"
                 android:scaleType="centerCrop"
+                android:clickable="true"
+                android:stateListAnimator="@animator/animator_press_button"
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -147,12 +150,15 @@
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
+            app:cardBackgroundColor="@color/white_0"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/onceinhollywood"
                 android:scaleType="centerCrop"
+                android:clickable="true"
+                android:stateListAnimator="@animator/animator_press_button"
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -161,12 +167,15 @@
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
             android:layout_columnWeight="0.25"
+            app:cardBackgroundColor="@color/white_0"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/thehatefulleight"
                 android:scaleType="centerCrop"
+                android:clickable="true"
+                android:stateListAnimator="@animator/animator_press_button"
                 />
         </androidx.cardview.widget.CardView>
     </GridLayout>

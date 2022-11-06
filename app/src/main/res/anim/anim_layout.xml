@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animation="@anim/card_animation"
+    android:interpolator="@android:interpolator/decelerate_cubic"
+    android:animationOrder="normal"
+    android:delay="0.1">
+    </layoutAnimation>
+    <!-- android:animation  - Здесь наша анимация появления!
+    android:interpolator    - Зададим интерполятор для более естественного движения
+    android:animationOrder  - Появление по порядку
+    android:delay="0.1"     - Задержка при появлении
+    -->
