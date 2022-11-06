@@ -6,18 +6,19 @@ import android.view.animation.Animation
 import android.widget.Toast
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var b: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        b = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(b.root)
         initNavigation()
     }
 
     private fun initNavigation() {
-        val upMenu = findViewById<MaterialToolbar>(R.id.tool_bar)
-        val bottomMenu = findViewById<BottomNavigationView>(R.id.bottom_menu)
-        upMenu.setOnMenuItemClickListener {
+        b.toolBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.Settings -> {
                     Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
@@ -26,18 +27,18 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomMenu.setOnItemSelectedListener {
+        b.bottomMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_favorites -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.btn_favorites, Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.menu_later -> {
-                    Toast.makeText(this, "Смотреть позже", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.btn_later, Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.menu_library -> {
-                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.btn_library, Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false

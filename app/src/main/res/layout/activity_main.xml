@@ -38,8 +38,8 @@
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
         app:cardBackgroundColor="@color/purple_500"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="15dp"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/corner_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/up_menu"
@@ -101,7 +101,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/default_margin"
         android:columnCount="2"
         android:orientation="horizontal"
         android:useDefaultMargins="true"
@@ -111,7 +111,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layoutAnimation="@anim/anim_layout">
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/corner_radius"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
@@ -128,7 +128,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/corner_radius"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
@@ -145,7 +145,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/corner_radius"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
@@ -162,7 +162,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/corner_radius"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="0.25"
