@@ -6,6 +6,7 @@
     <style name="layout_primary_background">
         <item name="android:background">?attr/colorPrimary</item>
     </style>
+    <!--layout_secondary_background!-->
     <style name="layout_secondary_background">
         <item name="android:background">?attr/colorSecondary</item>
     </style>

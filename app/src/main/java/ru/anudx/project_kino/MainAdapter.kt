@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import ru.anudx.project_kino.databinding.CardItemBinding
 
 class MainAdapter(val context: Context, val dataModel: ArrayList<DataModel>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>(){
