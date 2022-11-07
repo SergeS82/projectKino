@@ -2,6 +2,7 @@ package ru.anudx.project_kino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,11 @@ class MainActivity : AppCompatActivity() {
         b.recyclerView.setHasFixedSize(true)
         b.recyclerView.itemAnimator = DefaultItemAnimator()
         b.recyclerView.adapter = MainAdapter(this, PopulateData(this).dataToBeParsed())
+        val sidePadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
+        val topPadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
+        b.recyclerView.addItemDecoration(RecycleViewDecoration(sidePadding, topPadding))
+        b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
+        b.recyclerView.scheduleLayoutAnimation()
     }
     private fun initNavigation() {
         b.toolBar.setOnMenuItemClickListener {
