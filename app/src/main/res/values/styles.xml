@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name = "background">
-        <item name="android:background">@color/menu</item>
+    <style name="main_container">
+        <item name="android:background">@drawable/corner_background</item>
     </style>
-    <style name="background.menu_stile">
+    <style name="layout_primary_background">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+    <style name="layout_secondary_background">
+        <item name="android:background">?attr/colorSecondary</item>
+    </style>
+    <style name="layout_secondary_background.text_item">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+    <style name="layout_secondary_background.text_item.small">
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="layout_secondary_background.text_item.medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="layout_secondary_background.text_item.large">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="menu">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="layout_container">
-        <item name="android:background">@drawable/corner_background</item>
+        <item name="android:background">?attr/colorPrimaryVariant</item>
     </style>
 </resources>

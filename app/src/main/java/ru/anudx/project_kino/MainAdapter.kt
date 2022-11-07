@@ -27,9 +27,9 @@ class MainAdapter(val context: Context, val dataModel: ArrayList<DataModel>) : R
     }
     //
     class MainViewHolder(itemView: View, b: CardItemBinding) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.film_poster)
-        val title: TextView = itemView.findViewById(R.id.film_title)
+        val title = b.filmTitle
         val descr = b.filmDescription
+        val imageView: ImageView = itemView.findViewById(R.id.film_poster)
     }
 }
 
