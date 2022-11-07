@@ -6,5 +6,5 @@
         android:fromYScale="0"
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toXScale="1"
-        android:toYScale="1"        />
+        android:toYScale="1"/>
 </set>
