@@ -17,8 +17,7 @@ class FilmsAdapter(val context: Context) : RecyclerView.Adapter<FilmsAdapter.Mai
         field = newValue
         diffResult.dispatchUpdatesTo(this)
     }
-    val popupData = FilmsPopulateData(context as MainActivity);
-
+    val popupData = DataManager();
     //
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -54,7 +53,7 @@ class FilmsAdapter(val context: Context) : RecyclerView.Adapter<FilmsAdapter.Mai
         }
     }
     //
-    inner class FilmsPopulateData(val context: MainActivity) {
+    inner class DataManager {
         private var dataModels = ArrayList<FilmsModel>()
         private var dataModelImages = mutableListOf<Int>(R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
             ,R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
@@ -68,7 +67,7 @@ class FilmsAdapter(val context: Context) : RecyclerView.Adapter<FilmsAdapter.Mai
             title.addAll(context.resources.getStringArray(R.array.film_title))
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
-            for (i in 1..0){
+            for (i in 0..title.size-1){
                 films.add(FilmsModel(title[i], descr[i], dataModelImages[i], i))
             }
         }
@@ -89,12 +88,11 @@ class FilmsAdapter(val context: Context) : RecyclerView.Adapter<FilmsAdapter.Mai
             }
         }
         fun updateTitle(title: String) {
-            if (context.adapter.films.size > 0) {
-                var data = ArrayList(context.adapter.films)
+            if (films.size > 0) {
+                var data = ArrayList(films)
                 data[0] = data[0].copy(title = title)
                 films = data
             }
-
         }
     }
 }
