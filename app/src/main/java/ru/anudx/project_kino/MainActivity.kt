@@ -10,7 +10,7 @@ import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
-    lateinit var adapter: FilmsAdapter
+    private lateinit var adapter: FilmsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
