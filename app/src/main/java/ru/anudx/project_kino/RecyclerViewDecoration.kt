@@ -4,15 +4,13 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.forEachIndexed
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ru.anudx.project_kino.databinding.CardItemBinding
 
-class RecycleViewDecoration(val context: Context, val sidePadding: Int, val topPadding: Int): ItemDecoration() {
+class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val topPadding: Int): ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

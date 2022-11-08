@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
-    private var dataModels = ArrayList<DataModel>()
     private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +19,12 @@ class MainActivity : AppCompatActivity() {
         setUpFilms()
         b.recyclerView.layoutManager = LinearLayoutManager(this)
         b.recyclerView.setHasFixedSize(true)
-        //b.recyclerView.itemAnimator = DefaultItemAnimator()
-        b.recyclerView.itemAnimator = RecycleViewItemAnimator(this)
+        b.recyclerView.itemAnimator = RecyclerViewItemAnimator(this) //DefaultItemAnimator()
         adapter = MainAdapter(this, PopulateData(this).dataToBeParsed())
         b.recyclerView.adapter = adapter
         val sidePadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
         val topPadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
-        b.recyclerView.addItemDecoration(RecycleViewDecoration(this, sidePadding, topPadding)) // может быть несколько декороторов
+        b.recyclerView.addItemDecoration(RecyclerViewDecoration(this, sidePadding, topPadding)) // может быть несколько декороторов
         b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
         b.recyclerView.scheduleLayoutAnimation()
     }
