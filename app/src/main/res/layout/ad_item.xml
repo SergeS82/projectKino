@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:cardElevation="@dimen/corner_radius"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/film_constraint"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/film_poster_card"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/film_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/killbillv1"
+                android:contentDescription="TODO"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

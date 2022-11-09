@@ -6,11 +6,12 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import ru.anudx.project_kino.adapter.MainAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
-    private lateinit var adapter: FilmsAdapter
+    private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,17 +23,17 @@ class MainActivity : AppCompatActivity() {
         //b.recyclerView.itemAnimator = RecyclerViewItemAnimator(this) //DefaultItemAnimator()
         b.recyclerView.itemAnimator = DefaultItemAnimator()
         val itemAnimator = b.recyclerView.itemAnimator
-        if (itemAnimator is  DefaultItemAnimator){
+        if (itemAnimator is  DefaultItemAnimator) {
             itemAnimator.supportsChangeAnimations = false
         }
-        adapter = FilmsAdapter(this)
+        adapter = MainAdapter(this)
         adapter.popupData.dataToBeParsed()
         b.recyclerView.adapter = adapter
         val sidePadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
         val topPadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
         b.recyclerView.addItemDecoration(RecyclerViewDecoration(this, sidePadding, topPadding)) // может быть несколько декороторов
-        b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
-        b.recyclerView.scheduleLayoutAnimation()
+        //b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
+        //b.recyclerView.scheduleLayoutAnimation()
     }
     private fun initNavigation() {
         b.toolBar.setOnMenuItemClickListener {
@@ -48,17 +49,17 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_favorites -> {
                     //Toast.makeText(this, R.string.btn_favorites, Toast.LENGTH_SHORT).show()
-                    adapter.popupData.addData()
+                    //adapter.popupData.addData()
                     true
                 }
                 R.id.menu_later -> {
                     //Toast.makeText(this, R.string.btn_later, Toast.LENGTH_SHORT).show()
-                    adapter.popupData.removeLast()
+                    //adapter.popupData.removeLast()
                     true
                 }
                 R.id.menu_library -> {
                     //Toast.makeText(this, R.string.btn_library, Toast.LENGTH_SHORT).show()
-                    adapter.popupData.updateTitle("qwerty")
+                    //adapter.popupData.updateTitle("qwerty")
                     true
                 }
                 else -> false
