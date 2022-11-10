@@ -4,11 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
 import android.widget.Toast
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import ru.anudx.project_kino.adapter.MainAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 
@@ -47,9 +43,12 @@ class MainActivity : AppCompatActivity() {
         val callBack = SimpleItemTouchHelperCallback(adapter)
         val touchHelper = ItemTouchHelper(callBack)
         touchHelper.attachToRecyclerView(b.recyclerView)
-        //
-        val linearSnapHelper = LinearSnapHelper()
-        linearSnapHelper.attachToRecyclerView(b.recyclerView)
+        // linearSnapHelper
+        //val linearSnapHelper = LinearSnapHelper()
+        //linearSnapHelper.attachToRecyclerView(b.recyclerView)
+        // PagerSnapHelper
+        val pageSnapHelper = PagerSnapHelper()
+        pageSnapHelper.attachToRecyclerView(b.recyclerView)
         //b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
         //b.recyclerView.scheduleLayoutAnimation()
     }
