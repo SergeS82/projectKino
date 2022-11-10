@@ -59,7 +59,7 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
             title.addAll(context.resources.getStringArray(R.array.film_title))
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
-            for (i in 0..4) {
+            for (i in 0..11) {
                 if (i == 4)
                     data.add(AdModel(ArrayList<FilmsModel>(), "a${i}"))
                 else

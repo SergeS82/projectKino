@@ -54,4 +54,5 @@ class SimpleItemTouchHelperCallback(val adapter: MainAdapter) : ItemTouchHelper.
         adapter.notifyItemRemoved(viewHolder.adapterPosition);
     }
 
+
 }
