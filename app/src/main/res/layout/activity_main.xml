@@ -31,59 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_menu" />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/up_preview"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/posters_menu"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginRight="@dimen/default_margin"
-        app:cardCornerRadius="@dimen/corner_radius"
-        app:cardElevation="@dimen/corner_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/up_menu"
-        android:padding="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:baselineAligned="true"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/layout_primary_background">
-                <ImageView
-                    android:id="@+id/image_view"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/killbillv1" />
 
-                <ImageView
-                    android:id="@+id/image_view2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/pulpfiction" />
-
-                <ImageView
-                    android:id="@+id/image_view3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/onceinhollywood" />
-
-                <ImageView
-                    android:id="@+id/image_view4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/thehatefulleight" />
-            </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/text_view"
@@ -93,7 +41,7 @@
         android:clickable="true"
         android:text="@string/ownership"
         android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@+id/up_preview"
+        app:layout_constraintTop_toBottomOf="@+id/up_menu"
         android:gravity="center"
         android:layout_marginTop="@dimen/default_margin"/>
     <androidx.recyclerview.widget.RecyclerView
