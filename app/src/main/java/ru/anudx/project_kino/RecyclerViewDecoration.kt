@@ -32,17 +32,18 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
         outRect.right = sidePadding
     }
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDraw(c, parent, state)
-        parent.forEachIndexed { i, view ->
-            val v = parent.findViewHolderForLayoutPosition(i)
-            val rId:Int = when (v){
+        for (i in 0..parent.childCount-1) {
+            val view = parent.getChildAt(i)
+            val position = parent.getChildAdapterPosition(view)
+            val v = parent.findViewHolderForLayoutPosition(position)
+            val rId = when (v) {
                 null -> -1
                 else -> (v as TestHolder).rId
             }
             if (rId == R.layout.card_item) {
                 val b = CardItemBinding.bind(view)
                 // TODO: надо как-то по другому преобразовать
-                if ( "02468".contains(b.id.text[b.id.text.length-1]) ) {
+                if ("02468".contains(b.idStr.text[b.idStr.text.length-1])) {
                     b.filmConstraint.background = ResourcesCompat.getDrawable(
                         context.resources,
                         R.color.r_item_back_2,
@@ -53,7 +54,7 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
                         R.color.r_item_back_2,
                         context.theme
                     )
-                } else {
+                } else if (rId == R.layout.activity_ad) {
                     b.filmConstraint.background = ResourcesCompat.getDrawable(
                         context.resources,
                         R.color.r_item_back_1,
