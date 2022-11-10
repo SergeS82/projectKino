@@ -30,7 +30,7 @@ class DelegateAdAdapter(val context: Context):
         val view = inflater.inflate(R.layout.activity_ad, parent,false)
         val b = ActivityAdBinding.bind(view)
         val adapter = TestAdapter(context)
-        adapter.popupData.dataToBeParsed()
+        adapter.popupData.dataToBeParsed() // TODO: не перечитывать при смене ориентации 
         b.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         b.recyclerView.layoutManager
         b.recyclerView.setHasFixedSize(true)
