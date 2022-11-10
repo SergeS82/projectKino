@@ -43,7 +43,8 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
             if (rId == R.layout.card_item) {
                 val b = CardItemBinding.bind(view)
                 // TODO: надо как-то по другому преобразовать
-                if ("02468".contains(b.idStr.text[b.idStr.text.length-1])) {
+                // position - годный признак для черезстрочной декорации
+                if (position % 2 == 0) {
                     b.filmConstraint.background = ResourcesCompat.getDrawable(
                         context.resources,
                         R.color.r_item_back_2,
@@ -54,7 +55,7 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
                         R.color.r_item_back_2,
                         context.theme
                     )
-                } else if (rId == R.layout.activity_ad) {
+                } else {
                     b.filmConstraint.background = ResourcesCompat.getDrawable(
                         context.resources,
                         R.color.r_item_back_1,

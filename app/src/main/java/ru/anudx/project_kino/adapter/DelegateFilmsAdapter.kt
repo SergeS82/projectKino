@@ -20,7 +20,6 @@ class DelegateFilmsAdapter(val context: Context):
         val title = b.filmTitle
         val descr = b.filmDescription
         val imageView: ImageView = itemView.findViewById(R.id.film_poster)
-        var id = b.idStr
         override val rId =  R.layout.card_item
     }
     override fun isForViewType(item: Item, items: MutableList<Item>, position: Int): Boolean {
@@ -40,6 +39,5 @@ class DelegateFilmsAdapter(val context: Context):
         holder.title.text = item.title
         holder.descr.text = item.description
         holder.imageView.setImageResource(item.img)
-        holder.id.text = item.id
     }
 }

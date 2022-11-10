@@ -1,6 +1,7 @@
 package ru.anudx.project_kino.adapter
 
 import android.content.Context
+import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.model.AdModel
@@ -10,13 +11,17 @@ import ru.anudx.project_kino.model.Item
 class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
     val popupData = DataManager()
 
+
     init {
         delegatesManager.addDelegate(DelegateFilmsAdapter(context))
         delegatesManager.addDelegate(DelegateAdAdapter(context))
     }
 
     override fun setItems(items: List<Item>?) {
-        super.setItems(items)
+        val diff = FilmsDiffUtil(this.items as ArrayList<Item>, items as ArrayList<Item>)
+        val diffResult = DiffUtil.calculateDiff(diff)
+        this.items = items
+        diffResult.dispatchUpdatesTo(this)
     }
 
     //
@@ -55,7 +60,7 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
             for (i in 0..title.size - 1) {
-                if (i == 2)
+                if (i == 10)
                     data.add(AdModel(ArrayList<FilmsModel>(), "a${i}"))
                 else
                     data.add(FilmsModel(title[i], descr[i], dataModelImages[i], "f${i}"))
