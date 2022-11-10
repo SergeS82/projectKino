@@ -5,6 +5,8 @@
     <string name="btn_later">ПОСМОТРЕТЬ ПОЗЖЕ</string>
     <string name="btn_library">ПОДБОРКИ</string>
     <string name="btn_settings">НАСТРОЙКИ</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_delete">Удалить</string>
     <string name="ownership">Постеры предоставлены https://www.movieposters.com</string>
     <string-array name="film_title">
         <item>Убить Била v.1</item>

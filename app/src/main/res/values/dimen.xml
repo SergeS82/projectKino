@@ -7,4 +7,5 @@
     <!--RecycleView Decoration!-->
     <dimen name="sidPadding">16dp</dimen>
     <dimen name="topPadding">8dp</dimen>
+    <dimen name="alpha">0.8</dimen>
 </resources>

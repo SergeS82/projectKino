@@ -1,21 +1,13 @@
 package ru.anudx.project_kino
 
-import android.content.ClipData.Item
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.forEachIndexed
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import androidx.viewbinding.ViewBinding
-import ru.anudx.project_kino.adapter.DelegateAdAdapter
-import ru.anudx.project_kino.adapter.MainAdapter
-import ru.anudx.project_kino.adapter.TestHolder
-import ru.anudx.project_kino.databinding.AdItemBinding
+import ru.anudx.project_kino.adapter.CommonHolder
 import ru.anudx.project_kino.databinding.CardItemBinding
 
 class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val topPadding: Int): ItemDecoration() {
@@ -38,7 +30,7 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
             val v = parent.findViewHolderForLayoutPosition(position)
             val rId = when (v) {
                 null -> -1
-                else -> (v as TestHolder).rId
+                else -> (v as CommonHolder).rId
             }
             if (rId == R.layout.card_item) {
                 val b = CardItemBinding.bind(view)

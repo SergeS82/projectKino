@@ -4,15 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.AdItemBinding
 import ru.anudx.project_kino.model.FilmsModel
+import ru.anudx.project_kino.model.Item
+
 
 class TestAdapter(val context: Context): RecyclerView.Adapter<TestAdapter.ViewHolder>() {
     var data: ArrayList<FilmsModel> = ArrayList()
-        set(value){
+        set(value) {
+            val diff = FilmsDiffUtil(data, value)
+            val diffResult = DiffUtil.calculateDiff(diff)
             field = value
+            diffResult.dispatchUpdatesTo(this)
         }
     val popupData = this.DataManager()
 
@@ -61,15 +67,32 @@ class TestAdapter(val context: Context): RecyclerView.Adapter<TestAdapter.ViewHo
         )
 
         fun dataToBeParsed() {
-            var data1 = ArrayList<FilmsModel>()
+            var dataNew = ArrayList(data)
             var title = mutableListOf<String>()
             title.addAll(context.resources.getStringArray(R.array.film_title))
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
-            for (i in 0..title.size - 1) {
-                data1.add(FilmsModel(title[i], descr[i], dataModelImages[i], "f${i}"))
+            for (i in 0..2/*title.size - 1*/) {
+                dataNew.add(FilmsModel(title[i], descr[i], dataModelImages[i], "f${i}"))
             }
-            data = ArrayList(data1)
+            data = dataNew
+        }
+        fun addData(){
+            var dataNew = ArrayList(data)
+            var title = mutableListOf<String>()
+            title.addAll(context.resources.getStringArray(R.array.film_title))
+            var descr = mutableListOf<String>()
+            descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
+            val random = (4*(Math.random())).toInt()
+            dataNew.add(FilmsModel(title[random], descr[random], dataModelImages[random], "f${dataNew.size}"))
+            data = dataNew
+        }
+        fun removeData(){
+            var dataNew = ArrayList(data)
+            if (dataNew.size > 0){
+                dataNew.removeLast()
+                data = dataNew
+            }
         }
     }
 }

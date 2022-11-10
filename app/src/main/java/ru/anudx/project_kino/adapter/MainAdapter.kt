@@ -18,7 +18,7 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
     }
 
     override fun setItems(items: List<Item>?) {
-        val diff = FilmsDiffUtil(this.items as ArrayList<Item>, items as ArrayList<Item>)
+        val diff = FilmsDiffUtil(this.items as ArrayList<FilmsModel>, items as ArrayList<FilmsModel>)
         val diffResult = DiffUtil.calculateDiff(diff)
         this.items = items
         diffResult.dispatchUpdatesTo(this)
@@ -54,13 +54,13 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
         )
         fun dataToBeParsed() {
             var data = ArrayList<Item>()
-            var data2 = ArrayList<FilmsModel>()
+            var data2 = ArrayList<Item>()
             var title = mutableListOf<String>()
             title.addAll(context.resources.getStringArray(R.array.film_title))
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
             for (i in 0..title.size - 1) {
-                if (i == 10)
+                if (i == 1)
                     data.add(AdModel(ArrayList<FilmsModel>(), "a${i}"))
                 else
                     data.add(FilmsModel(title[i], descr[i], dataModelImages[i], "f${i}"))

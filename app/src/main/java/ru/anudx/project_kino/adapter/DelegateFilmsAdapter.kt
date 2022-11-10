@@ -16,7 +16,7 @@ class DelegateFilmsAdapter(val context: Context):
     AbsListItemAdapterDelegate<FilmsModel, Item, DelegateFilmsAdapter.ViewHolder>()
 {
 
-    class ViewHolder(itemView: View, b: CardItemBinding): RecyclerView.ViewHolder(itemView), TestHolder{
+    class ViewHolder(itemView: View, b: CardItemBinding): RecyclerView.ViewHolder(itemView), CommonHolder{
         val title = b.filmTitle
         val descr = b.filmDescription
         val imageView: ImageView = itemView.findViewById(R.id.film_poster)
