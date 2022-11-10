@@ -3,9 +3,9 @@ package ru.anudx.project_kino
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.adapter.MainAdapter
@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
             layoutManager.onRestoreInstanceState(outState)
         }
         restoreState()
+        val callBack = SimpleItemTouchHelperCallback(adapter)
+        val touchHelper = ItemTouchHelper(callBack)
+        touchHelper.attachToRecyclerView(b.recyclerView)
         //b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
         //b.recyclerView.scheduleLayoutAnimation()
     }

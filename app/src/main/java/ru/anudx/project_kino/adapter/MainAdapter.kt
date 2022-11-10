@@ -59,8 +59,8 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
             title.addAll(context.resources.getStringArray(R.array.film_title))
             var descr = mutableListOf<String>()
             descr.addAll(context.resources.getStringArray(R.array.film_descriptions))
-            for (i in 0..title.size - 1) {
-                if (i == 6)
+            for (i in 0..4) {
+                if (i == 4)
                     data.add(AdModel(ArrayList<FilmsModel>(), "a${i}"))
                 else
                     data.add(FilmsModel(title[i], descr[i], dataModelImages[i], "f${i}"))
@@ -78,13 +78,13 @@ class MainAdapter(val context: Context) : ListDelegationAdapter<List<Item>>() {
 //            data.add(FilmsModel(title[2], descr[2], dataModelImages[2],films.size))
 //            films = data
 //        }
-//        fun removeLast(){
-//            var data = ArrayList(films)
-//            if (data.size>0) {
-//                data.removeLast()
-//                films = data
-//            }
-//        }
+        fun removeSwiped(position: Int){
+            var data = ArrayList(items)
+            if (data.size>0) {
+                data.removeAt(position)
+                items = data
+            }
+        }
 //        fun updateTitle(title: String) {
 //            if (films.size > 0) {
 //                var data = ArrayList(films)
