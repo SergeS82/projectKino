@@ -2,16 +2,20 @@ package ru.anudx.project_kino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.adapter.MainAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
     private lateinit var adapter: MainAdapter
+    private val KEY_MANAGER_STATE = "KeyForLayoutManagerState"
+    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +36,19 @@ class MainActivity : AppCompatActivity() {
         val sidePadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
         val topPadding = resources.getDimensionPixelSize(R.dimen.sidPadding)
         b.recyclerView.addItemDecoration(RecyclerViewDecoration(this, sidePadding, topPadding)) // может быть несколько декороторов
+        layoutManager = b.recyclerView.layoutManager ?: LinearLayoutManager(this)
+        fun restoreState(){
+            val outState: Parcelable?= savedInstanceState?.getParcelable(KEY_MANAGER_STATE)
+            layoutManager.onRestoreInstanceState(outState)
+        }
+        restoreState()
         //b.recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.recycle_lalyout_animation)
         //b.recyclerView.scheduleLayoutAnimation()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(KEY_MANAGER_STATE, layoutManager.onSaveInstanceState())
     }
     private fun initNavigation() {
         b.toolBar.setOnMenuItemClickListener {
