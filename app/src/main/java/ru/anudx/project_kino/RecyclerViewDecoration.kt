@@ -1,5 +1,6 @@
 package ru.anudx.project_kino
 
+import android.content.ClipData.Item
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
@@ -11,6 +12,9 @@ import androidx.core.view.forEachIndexed
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.viewbinding.ViewBinding
+import ru.anudx.project_kino.adapter.DelegateAdAdapter
+import ru.anudx.project_kino.adapter.MainAdapter
+import ru.anudx.project_kino.adapter.TestHolder
 import ru.anudx.project_kino.databinding.AdItemBinding
 import ru.anudx.project_kino.databinding.CardItemBinding
 
@@ -30,10 +34,14 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
         parent.forEachIndexed { i, view ->
-            // TODO: совсем неврасиво надо переделать
-            try {
+            val v = parent.findViewHolderForLayoutPosition(i)
+            val rId:Int = when (v){
+                null -> -1
+                else -> (v as TestHolder).rId
+            }
+            if (rId == R.layout.card_item) {
                 val b = CardItemBinding.bind(view)
-                // TODO: надо как-то по другому преобразовать 
+                // TODO: надо как-то по другому преобразовать
                 if ( "02468".contains(b.id.text[b.id.text.length-1]) ) {
                     b.filmConstraint.background = ResourcesCompat.getDrawable(
                         context.resources,
@@ -57,7 +65,8 @@ class RecyclerViewDecoration(val context: Context, val sidePadding: Int, val top
                         context.theme
                     )
                 }
-            } catch (e: NullPointerException) {
+            }
+            else if (rId == R.layout.activity_ad) {
 //                val b = AdItemBinding.bind(view)
 //                b.filmConstraint.background = ResourcesCompat.getDrawable(
 //                    context.resources,

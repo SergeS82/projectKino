@@ -17,7 +17,8 @@ import ru.anudx.project_kino.model.Item
 class DelegateAdAdapter(val context: Context):
     AbsListItemAdapterDelegate<AdModel, Item, DelegateAdAdapter.ViewHolder>()
 {
-    class ViewHolder(itemView: View, b: ActivityAdBinding): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View, b: ActivityAdBinding): RecyclerView.ViewHolder(itemView), TestHolder{
+        override val rId =  R.layout.activity_ad
     }
 
     override fun isForViewType(item: Item, items: MutableList<Item>, position: Int): Boolean {

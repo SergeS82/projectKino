@@ -16,11 +16,12 @@ class DelegateFilmsAdapter(val context: Context):
     AbsListItemAdapterDelegate<FilmsModel, Item, DelegateFilmsAdapter.ViewHolder>()
 {
 
-    class ViewHolder(itemView: View, b: CardItemBinding): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View, b: CardItemBinding): RecyclerView.ViewHolder(itemView), TestHolder{
         val title = b.filmTitle
         val descr = b.filmDescription
         val imageView: ImageView = itemView.findViewById(R.id.film_poster)
         var id = b.id
+        override val rId =  R.layout.card_item
     }
     override fun isForViewType(item: Item, items: MutableList<Item>, position: Int): Boolean {
         return item is FilmsModel
