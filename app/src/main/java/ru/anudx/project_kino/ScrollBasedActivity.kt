@@ -25,16 +25,16 @@ class ScrollBasedActivity: AppCompatActivity() {
                 else -> snackbar.show()
             }
         }
-        b.toolbarLayout.title = "SkillFactory"
-        b.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (verticalOffset == 0){
-                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.black))
-            }
-            else if (Math.abs(verticalOffset) >= appBarLayout.scrollBarSize ){
-                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.purple_500))
-            }
-            b.toolbarLayout.title = verticalOffset.toString()
-        })
+        //b.toolbarLayout.title = "SkillFactory !!!"
+//        b.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+//            if (verticalOffset == 0){
+//                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.black))
+//            }
+//            else if (Math.abs(verticalOffset) >= appBarLayout.scrollBarSize ){
+//                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.purple_500))
+//            }
+//            b.toolbarLayout.title = verticalOffset.toString()
+//        })
 
     }
 }
