@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.size
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.databinding.ScrollBasedActivityBinding
@@ -26,6 +27,12 @@ class ScrollBasedActivity: AppCompatActivity() {
         }
         b.toolbarLayout.title = "SkillFactory"
         b.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (verticalOffset == 0){
+                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.black))
+            }
+            else if (Math.abs(verticalOffset) >= appBarLayout.scrollBarSize ){
+                b.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.purple_500))
+            }
             b.toolbarLayout.title = verticalOffset.toString()
         })
 
