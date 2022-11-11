@@ -1,4 +1,4 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.decorations
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import ru.anudx.project_kino.R
 import ru.anudx.project_kino.adapter.CommonHolder
 import ru.anudx.project_kino.databinding.CardItemBinding
 

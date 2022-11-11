@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.*
 import ru.anudx.project_kino.adapter.MainAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
+import ru.anudx.project_kino.decorations.RecyclerViewDecoration
+import ru.anudx.project_kino.item_touch_helpers.SimpleItemTouchHelperCallback
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding

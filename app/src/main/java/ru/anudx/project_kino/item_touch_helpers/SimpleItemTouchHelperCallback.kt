@@ -1,4 +1,4 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.item_touch_helpers
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

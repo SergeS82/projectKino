@@ -1,13 +1,14 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.decorations
 
 import android.content.Context
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
+import ru.anudx.project_kino.R
 
 class RecyclerViewItemAnimator(private val context: Context): DefaultItemAnimator() {
-    val animAdd = AnimationUtils.loadAnimation(context,R.anim.scale)
-    val animRemove = AnimationUtils.loadAnimation(context,R.anim.slide_from_right)
+    val animAdd = AnimationUtils.loadAnimation(context, R.anim.scale)
+    val animRemove = AnimationUtils.loadAnimation(context, R.anim.slide_from_right)
     override fun onAddStarting(item: RecyclerView.ViewHolder?) {
         item?.itemView?.startAnimation(animAdd)
     }
