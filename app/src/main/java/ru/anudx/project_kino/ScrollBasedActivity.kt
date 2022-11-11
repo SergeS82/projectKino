@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.databinding.ScrollBasedActivityBinding
 
@@ -23,6 +24,10 @@ class ScrollBasedActivity: AppCompatActivity() {
                 else -> snackbar.show()
             }
         }
+        b.toolbarLayout.title = "SkillFactory"
+        b.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            b.toolbarLayout.title = verticalOffset.toString()
+        })
 
     }
 }
