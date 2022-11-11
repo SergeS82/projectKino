@@ -8,6 +8,7 @@
     <string name="btn_add">Добавить</string>
     <string name="btn_delete">Удалить</string>
     <string name="ownership">Постеры предоставлены https://www.movieposters.com</string>
+    <string name="coordinator_layout_behavior">https://developer.android.com/reference/androidx/coordinatorlayout/widget/CoordinatorLayout.Behavior</string>
     <string-array name="film_title">
         <item>Убить Била v.1</item>
         <item>Однажды в Голивуде</item>
