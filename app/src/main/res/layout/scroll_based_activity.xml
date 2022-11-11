@@ -68,12 +68,16 @@
         android:layout_gravity="bottom"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         style="@style/menu">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BottomViewLayout"
-            android:textSize="24sp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bottom_menu"
+            style="@style/menu"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/navigation_menu" />
     </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
