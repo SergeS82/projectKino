@@ -20,9 +20,10 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:minHeight="60dp"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@android:color/holo_red_dark"
             app:toolbarId="@+id/toolbar"
-            app:layout_scrollFlags="scroll|snap"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="Skillfactory"
             >
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -39,7 +40,7 @@
                 app:layout_collapseMode = "pin"
                 android:layout_gravity="bottom"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Skillfactory" >
+                >
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
