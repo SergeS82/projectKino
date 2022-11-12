@@ -64,6 +64,14 @@
         app:layout_anchorGravity="top|end"
         android:layout_marginBottom="70dp"
         app:srcCompat="@android:drawable/ic_dialog_email"/>
+    <!--затемнение заднего фона-->
+    <FrameLayout
+        android:id="@+id/tint_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/black">
+    </FrameLayout>
     <!-- BottomSeet !-->
     <FrameLayout
             android:id="@+id/bottom_sheet"

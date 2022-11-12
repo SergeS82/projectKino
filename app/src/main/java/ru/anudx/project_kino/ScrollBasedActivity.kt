@@ -36,6 +36,7 @@ class ScrollBasedActivity: AppCompatActivity() {
                     b.fab2.scaleX = 1 - slideOffset
                     b.fab2.scaleY = 1 - slideOffset
                 }
+                b.tintBack.alpha = slideOffset
             }
         })
         b.fab2.setOnClickListener {
