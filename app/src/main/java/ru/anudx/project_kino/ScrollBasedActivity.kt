@@ -32,6 +32,7 @@ class ScrollBasedActivity: AppCompatActivity() {
                 b.tintBack.alpha = slideOffset
             }
         })
+        bottomSheetBehavior.halfExpandedRatio = 0.75f
         b.fab2.setOnClickListener {
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
