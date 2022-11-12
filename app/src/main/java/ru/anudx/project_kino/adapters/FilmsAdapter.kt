@@ -14,7 +14,7 @@ import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.databinding.FilmsItemBinding
 import ru.anudx.project_kino.model.FilmsData
 
-class FilmsAdapter(val context: Context, val contectBinding: ActivityMainBinding): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
+class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
     var data = ArrayList<FilmsData>()
     set(value) {
         val diff = FilmsDiff(field, value)
