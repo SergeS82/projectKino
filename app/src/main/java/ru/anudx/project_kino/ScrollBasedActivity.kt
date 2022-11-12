@@ -23,6 +23,11 @@ class ScrollBasedActivity: AppCompatActivity() {
         val bottomSheetBehavior = BottomSheetBehavior.from(b.bottomSheet)
         b.fab2.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            if (bottomSheetBehavior.peekHeight > (70*3.5).toInt())
+                bottomSheetBehavior.setPeekHeight((70*3.5).toInt())
+            else
+                bottomSheetBehavior.setPeekHeight((70*3.5*3).toInt())
+
             //bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED//BottomSheet свернут и есть "язычок"
             //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED//BottomSheet развернут
             //bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN//BottomSheet скрыт на экране

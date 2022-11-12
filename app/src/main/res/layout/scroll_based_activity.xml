@@ -64,7 +64,7 @@
         app:layout_anchorGravity="top|end"
         android:layout_marginBottom="70dp"
         app:srcCompat="@android:drawable/ic_dialog_email"/>
-
+    <!-- BottomSeet !-->
     <FrameLayout
             android:id="@+id/bottom_sheet"
             android:layout_width="match_parent"
