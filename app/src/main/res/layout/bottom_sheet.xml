@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="70dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/bottom_menu"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_menu"
+        style="@style/menu"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/killbillv1"
+        android:textColor="@android:color/white" />
+</LinearLayout>
