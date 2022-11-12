@@ -9,7 +9,10 @@
     android:orientation="vertical"
     app:behavior_hideable="false"
     app:behavior_peekHeight="70dp"
-    app:layout_behavior="@string/bottom_sheet_behavior">
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_skipCollapsed="false"
+    >
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="70dp"
