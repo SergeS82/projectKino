@@ -70,6 +70,13 @@ class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.View
                 data.add(FilmsData(i, titles[i], descriptions[i], images[i]))
             }
         }
+        fun removeSwiped(position: Int){
+            var newData = ArrayList(data)
+            if (newData.size>0) {
+                newData.removeAt(position)
+                data = newData
+            }
+        }
     }
 
 }

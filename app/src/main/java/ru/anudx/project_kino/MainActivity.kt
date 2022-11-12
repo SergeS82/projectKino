@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.anudx.project_kino.adapters.FilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
+import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = FilmsAdapter(this)
         b.filmsRecycler.adapter = adapter
         adapter.dataManager.init()
+        val touchHelper =  ItemTouchHelper(MainItemTouchHelper(adapter))
+        touchHelper.attachToRecyclerView(b.filmsRecycler)
 
     }
 
