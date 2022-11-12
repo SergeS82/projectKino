@@ -2,6 +2,7 @@ package ru.anudx.project_kino
 
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,6 +14,7 @@ class ScrollBasedActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val b = ScrollBasedActivityBinding.inflate(layoutInflater)
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(b.root)
         val snackbar = Snackbar.make(b.root, "Snackbar!", Snackbar.LENGTH_SHORT)
         snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.teal_200))
@@ -37,5 +39,6 @@ class ScrollBasedActivity: AppCompatActivity() {
             else if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
     }
 }
