@@ -26,7 +26,7 @@
             android:src="@drawable/killbillv1"
             android:scaleType="centerCrop"
             android:clickable="true"
-            android:stateListAnimator="@animator/animator_press_button"
+            android:stateListAnimator="@animator/animator_press_button_down"
             />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -43,7 +43,7 @@
             android:src="@drawable/pulpfiction"
             android:scaleType="centerCrop"
             android:clickable="true"
-            android:stateListAnimator="@animator/animator_press_button"
+            android:stateListAnimator="@animator/animator_press_button_down"
             />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -60,7 +60,7 @@
             android:src="@drawable/onceinhollywood"
             android:scaleType="centerCrop"
             android:clickable="true"
-            android:stateListAnimator="@animator/animator_press_button"
+            android:stateListAnimator="@animator/animator_press_button_down"
             />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -77,7 +77,7 @@
             android:src="@drawable/thehatefulleight"
             android:scaleType="centerCrop"
             android:clickable="true"
-            android:stateListAnimator="@animator/animator_press_button"
+            android:stateListAnimator="@animator/animator_press_button_down"
             />
     </androidx.cardview.widget.CardView>
 </GridLayout>
