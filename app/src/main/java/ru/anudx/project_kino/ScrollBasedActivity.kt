@@ -33,8 +33,9 @@ class ScrollBasedActivity: AppCompatActivity() {
             }
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 if (slideOffset > 0 && slideOffset < 1) {
-                    b.fab2.scaleX = 1 - slideOffset
-                    b.fab2.scaleY = 1 - slideOffset
+                    b.fab2.animate().scaleX(1 - slideOffset).scaleY(1 - slideOffset).alpha(1-slideOffset).start()
+                    //b.fab2.scaleX = 1 - slideOffset
+                    //b.fab2.scaleY = 1 - slideOffset
                 }
                 b.tintBack.alpha = slideOffset
             }
