@@ -10,7 +10,7 @@ import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.FilmsItemBinding
 import ru.anudx.project_kino.model.FilmsData
 
-class Films(val context: Context): RecyclerView.Adapter<Films.ViewHolder>() {
+class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
     var data = ArrayList<FilmsData>()
     set(value) {
         val diff = FilmsDiff(field, value)
@@ -43,7 +43,13 @@ class Films(val context: Context): RecyclerView.Adapter<Films.ViewHolder>() {
         ,R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
         ,R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight)
         fun init(){
-            val titles =
+            var titles = arrayListOf<String>()
+            titles.addAll(context.resources.getStringArray(R.array.films_title))
+            val descriptions = arrayListOf<String>()
+            descriptions.addAll(context.resources.getStringArray(R.array.films_description))
+            for (i in 0 until titles.size) {
+                data.add(FilmsData(i, titles[i], descriptions[i], images[i]))
+            }
         }
     }
 

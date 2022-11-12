@@ -99,15 +99,21 @@
         android:textSize="13sp"
         app:layout_constraintTop_toBottomOf="@+id/up_preview" />
 
-    <include
-        layout="@layout/films_list"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_view">
+        <androidx.recyclerview.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/films_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

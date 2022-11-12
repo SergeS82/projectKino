@@ -2,10 +2,12 @@ package ru.anudx.project_kino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.widget.Toast
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.anudx.project_kino.adapters.FilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
+        val recycler = LayoutInflater.from(this).inflate(R.layout.films_list, b.root, false)
+        val adapter = FilmsAdapter(this)
+        b.filmsRecycler.adapter = adapter
+        adapter.dataManager.init()
         initNavigation()
     }
 
