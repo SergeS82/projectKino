@@ -33,11 +33,10 @@ class ScrollBasedActivity: AppCompatActivity() {
             }
         })
         b.fab2.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-            if (bottomSheetBehavior.peekHeight > (70*3.5).toInt())
-                bottomSheetBehavior.setPeekHeight((70*3.5).toInt())
-            else
-                bottomSheetBehavior.setPeekHeight((70*3.5*3).toInt())
+            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            else if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
     }
 }
