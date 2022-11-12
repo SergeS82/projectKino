@@ -24,6 +24,12 @@ class ScrollBasedActivity: AppCompatActivity() {
         val bottomSheetBehavior = BottomSheetBehavior.from(b.bottomSheet)
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
             override fun onStateChanged(bottomSheet: View, newState: Int) {
+                //BottomSheetBehavior.STATE_COLLAPSED //BottomSheet раскрыт только на peekHeight
+                //BottomSheetBehavior.STATE_DRAGGING //BottomSheet в движении
+                //BottomSheetBehavior.STATE_EXPANDED //BottomSheet раскрыт
+                //BottomSheetBehavior.STATE_HIDDEN //BottomSheet скрыт
+                //BottomSheetBehavior.STATE_SETTLING //BottomSheet автоматически закрывается/раскрывается после того, как вы потянули и отпустили
+                //BottomSheetBehavior.STATE_HALF_EXPANDED //BottomSheet раскрыт наполовину
             }
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 if (slideOffset > 0 && slideOffset < 1) {
