@@ -1,16 +1,20 @@
 package ru.anudx.project_kino.adapters
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.anudx.project_kino.databinding.FilmsItemBinding
 
-class Films: RecyclerView.Adapter<Films.ViewHolder> {
+class Films(context: Context): RecyclerView.Adapter<Films.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val item =
+        val b = FilmsItemBinding.bind()
+        return ViewHolder()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
