@@ -1,6 +1,7 @@
 package ru.anudx.project_kino
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,6 +22,16 @@ class ScrollBasedActivity: AppCompatActivity() {
             Toast.makeText(this, "Toast!", Toast.LENGTH_SHORT).show()
         }
         val bottomSheetBehavior = BottomSheetBehavior.from(b.bottomSheet)
+        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback(){
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                if (slideOffset > 0 && slideOffset < 1) {
+                    b.fab2.scaleX = 1 - slideOffset
+                    b.fab2.scaleY = 1 - slideOffset
+                }
+            }
+        })
         b.fab2.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             if (bottomSheetBehavior.peekHeight > (70*3.5).toInt())
