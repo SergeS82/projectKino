@@ -2,14 +2,13 @@ package ru.anudx.project_kino.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.DetailsActivityFilm
-import ru.anudx.project_kino.MainActivity
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.databinding.FilmsItemBinding
@@ -24,26 +23,37 @@ class FilmsAdapter(val context: Context, val contectBinding: ActivityMainBinding
         diffResuld.dispatchUpdatesTo(this)
     }
     val dataManager = DataManager()
-    class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView){
         val image = b.imageView
         val title = b.title
         val description = b.description
+        fun bind(item: FilmsData){
+            image.setImageResource(item.image)
+            title.text = item.title
+            description.text = item.description
+            itemView.setOnClickListener {
+                val intent = Intent(context, DetailsActivityFilm()::class.java)
+                val bundle = Bundle()
+                bundle.putParcelable("film", item)
+                intent.putExtras(bundle)
+                context.startActivity(intent)
+            }
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val item = LayoutInflater.from(context).inflate(R.layout.films_item,parent,false)
         val b = FilmsItemBinding.bind(item)
-        item.setOnClickListener {
-            val intent = Intent(context, DetailsActivityFilm()::class.java)
-            context.startActivity(intent)
-        }
         return ViewHolder(item, b)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.image.setImageResource(data[position].image)
-        holder.title.text = data[position].title
-        holder.description.text = data[position].description
+        when (holder) {
+            is ViewHolder -> {
+                holder.bind(data[position])
+            }
+        }
     }
     override fun getItemCount(): Int = data.size
     inner class DataManager{
@@ -63,3 +73,6 @@ class FilmsAdapter(val context: Context, val contectBinding: ActivityMainBinding
     }
 
 }
+
+
+

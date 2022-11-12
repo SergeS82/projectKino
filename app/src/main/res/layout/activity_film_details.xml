@@ -22,6 +22,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Тут должно быть название фильма">
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -50,7 +51,8 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="?attr/actionModeShareDrawable" />
-    <include layout="@layout/content_scrolling"/>
+
+    <include android:id="@+id/description" layout="@layout/content_scrolling"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

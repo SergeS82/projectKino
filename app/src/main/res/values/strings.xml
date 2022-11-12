@@ -25,22 +25,22 @@
         <item>Омерзительная восьмерка</item>
     </string-array>
     <string-array name="films_description">
-        <item>Убить Билла v.1</item>
-        <item>Однажда в голивуде</item>
-        <item>Криминальное чтиво</item>
-        <item>Омерзительная восьмерка</item>
-        <item>Убить Билла v.1</item>
-        <item>Однажда в голивуде</item>
-        <item>Криминальное чтиво</item>
-        <item>Омерзительная восьмерка</item>
-        <item>Убить Билла v.1</item>
-        <item>Однажда в голивуде</item>
-        <item>Криминальное чтиво</item>
-        <item>Омерзительная восьмерка</item>
-        <item>Убить Билла v.1</item>
-        <item>Однажда в голивуде</item>
-        <item>Криминальное чтиво</item>
-        <item>Омерзительная восьмерка</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
+        <item>@string/large_text</item>
     </string-array>
     <string name="large_text">
         В одной из отдаленных улиц Москвы, в сером доме с белыми колоннами, антресолью и покривившимся балконом, жила некогда барыня, вдова, окруженная многочисленною дворней. Сыновья ее служили в Петербурге, дочери вышли замуж; она выезжала редко и уединенно доживала последние годы своей скупой и скучающей старости. День ее, нерадостный и ненастный, давно прошел; но и вечер ее был чернее ночи.
