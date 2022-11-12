@@ -10,4 +10,5 @@
     <color name="white_0">#00FFFFFF</color>
     <color name="r_item_back_1">#FFFFBB33</color>
     <color name="r_item_back_2">#775107</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
 </resources>

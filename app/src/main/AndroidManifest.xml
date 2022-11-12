@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Project_kino"
         tools:targetApi="31">
         <activity
-            android:name=".ScrollBasedActivity"
+            android:name=".ScrollBasedActivity" android:theme="@style/Theme.Project_kino"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
