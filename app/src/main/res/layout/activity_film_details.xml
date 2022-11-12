@@ -52,7 +52,7 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="?attr/actionModeShareDrawable" />
 
-    <include android:id="@+id/description" layout="@layout/content_scrolling"/>
+    <include android:id="@+id/scrolling_text" layout="@layout/content_scrolling"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

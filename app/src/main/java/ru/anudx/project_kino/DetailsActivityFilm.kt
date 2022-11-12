@@ -13,7 +13,7 @@ class DetailsActivityFilm : AppCompatActivity() {
         setContentView(b.root)
         val film = intent.extras?.get("film") as FilmsData
         b.toolbar.title = film.title
-        b.description.description.text = film.description
+        b.scrollingText.source.text = film.description
         b.image.setImageResource(film.image)
     }
 }
