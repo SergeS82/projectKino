@@ -6,4 +6,40 @@
     <string name="btn_library">ПОДБОРКИ</string>
     <string name="btn_settings">НАСТРОЙКИ</string>
     <string name="ownership">Постеры предоставлены https://www.movieposters.com</string>
+    <string-array name="films_title">
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+    </string-array>
+    <string-array name="films_description">
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+        <item>Убить Билла v.1</item>
+        <item>Однажда в голивуде</item>
+        <item>Криминальное чтиво</item>
+        <item>Омерзительная восьмерка</item>
+    </string-array>
 </resources>
