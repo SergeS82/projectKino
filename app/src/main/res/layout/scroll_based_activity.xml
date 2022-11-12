@@ -53,15 +53,26 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:backgroundTint="@android:color/darker_gray"
-        android:layout_margin="@dimen/default_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layout_anchor="@id/bottom_sheet"
+        app:layout_anchorGravity="top|end"
+        android:layout_marginBottom="70dp"
+        app:srcCompat="@android:drawable/ic_dialog_email"/>
 
-        <include layout="@layout/bottom_sheet"/>
-
+    <FrameLayout
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="70dp"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:behavior_skipCollapsed="false">
+            <include layout="@layout/bottom_sheet"/>
+    </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
