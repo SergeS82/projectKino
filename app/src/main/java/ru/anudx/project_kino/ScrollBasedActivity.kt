@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.size
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.databinding.ScrollBasedActivityBinding
 
@@ -19,11 +20,13 @@ class ScrollBasedActivity: AppCompatActivity() {
         snackbar.setAction("Action"){
             Toast.makeText(this, "Toast!", Toast.LENGTH_SHORT).show()
         }
+        val bottomSheetBehavior = BottomSheetBehavior.from(b.bottomSheet)
         b.fab2.setOnClickListener {
-            when (snackbar.isShown){
-                true -> snackbar.dismiss()
-                else -> snackbar.show()
-            }
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+//            when (snackbar.isShown){
+//                true -> snackbar.dismiss()
+//                else -> snackbar.show()
+//            }
         }
         //b.toolbarLayout.title = "SkillFactory !!!"
 //        b.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->

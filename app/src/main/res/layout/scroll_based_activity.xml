@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:backgroundTint="@android:color/darker_gray"
-        app:layout_anchor="@id/bottom_sheet"
+        app:layout_anchor="@+id/bottom_menu"
         app:layout_anchorGravity="top|end"
         android:layout_marginBottom="70dp"
         app:srcCompat="@android:drawable/ic_dialog_email"/>
@@ -69,7 +69,7 @@
             android:id="@+id/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:behavior_hideable="false"
+            app:behavior_hideable="true"
             app:behavior_peekHeight="70dp"
             app:layout_behavior="@string/bottom_sheet_behavior"
             app:behavior_skipCollapsed="false">
