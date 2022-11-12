@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="layout_background">@android:color/holo_orange_light</color>
+    <color name="card_background_light">#FFFFBB33</color>
+    <color name="card_background_dark">#FF9800</color>
     <color name="menu">#4D0AE4</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="teal_200">#FF03DAC5</color>
