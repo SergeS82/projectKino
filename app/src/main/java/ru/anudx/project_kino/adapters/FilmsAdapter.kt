@@ -1,16 +1,21 @@
 package ru.anudx.project_kino.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import ru.anudx.project_kino.DetailsActivityFilm
+import ru.anudx.project_kino.MainActivity
 import ru.anudx.project_kino.R
+import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.databinding.FilmsItemBinding
 import ru.anudx.project_kino.model.FilmsData
 
-class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
+class FilmsAdapter(val context: Context, val contectBinding: ActivityMainBinding): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
     var data = ArrayList<FilmsData>()
     set(value) {
         val diff = FilmsDiff(field, value)
@@ -28,6 +33,10 @@ class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val item = LayoutInflater.from(context).inflate(R.layout.films_item,parent,false)
         val b = FilmsItemBinding.bind(item)
+        item.setOnClickListener {
+            val intent = Intent(context, DetailsActivityFilm()::class.java)
+            context.startActivity(intent)
+        }
         return ViewHolder(item, b)
     }
 

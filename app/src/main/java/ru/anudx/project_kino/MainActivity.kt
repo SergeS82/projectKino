@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         b.filmsRecycler.layoutManager = LinearLayoutManager(this);
         b.filmsRecycler.itemAnimator = DefaultItemAnimator()
         b.filmsRecycler.addItemDecoration(RecyclerDecoration(this, resources.getDimensionPixelSize(R.dimen.side_padding), resources.getDimensionPixelSize(R.dimen.top_padding)))
-        val adapter = FilmsAdapter(this)
+        val adapter = FilmsAdapter(this, b)
         b.filmsRecycler.adapter = adapter
         adapter.dataManager.init()
 

@@ -22,15 +22,6 @@
             app:title="Search it!"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_menu"
-        style="@style/background.menu_stile"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation_menu" />
     <androidx.cardview.widget.CardView
         android:id="@+id/up_preview"
         android:layout_width="match_parent"
@@ -114,6 +105,16 @@
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
     </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_menu"
+        style="@style/background.menu_stile"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
