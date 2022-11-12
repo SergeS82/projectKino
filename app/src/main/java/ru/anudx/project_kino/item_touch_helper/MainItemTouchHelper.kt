@@ -21,6 +21,7 @@ class MainItemTouchHelper(val adapter: FilmsAdapter): ItemTouchHelper.Callback()
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
+        viewHolder.itemView.animate().scaleY(1.1f).scaleX(1.1f).setDuration(10).start()
         val items = ArrayList(adapter.data)
         val fromPosition = viewHolder.adapterPosition
         val toPosition = target.adapterPosition
@@ -35,6 +36,11 @@ class MainItemTouchHelper(val adapter: FilmsAdapter): ItemTouchHelper.Callback()
         adapter.data = items
         return true
     }
+
+    override fun isLongPressDragEnabled(): Boolean = true
+
+    override fun isItemViewSwipeEnabled(): Boolean = true
+
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         adapter.dataManager.removeSwiped(viewHolder.adapterPosition)
