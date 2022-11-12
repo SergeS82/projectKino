@@ -23,6 +23,9 @@ class ScrollBasedActivity: AppCompatActivity() {
         val bottomSheetBehavior = BottomSheetBehavior.from(b.bottomSheet)
         b.fab2.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            //bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED//BottomSheet свернут и есть "язычок"
+            //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED//BottomSheet развернут
+            //bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN//BottomSheet скрыт на экране
 //            when (snackbar.isShown){
 //                true -> snackbar.dismiss()
 //                else -> snackbar.show()
