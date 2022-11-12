@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.widget.Toast
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.anudx.project_kino.adapters.FilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
+import ru.anudx.project_kino.decorations.RecyclerDecoration
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
@@ -16,11 +19,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
-        val recycler = LayoutInflater.from(this).inflate(R.layout.films_list, b.root, false)
+        initNavigation()
+        b.filmsRecycler.layoutManager = LinearLayoutManager(this);
+        b.filmsRecycler.itemAnimator = DefaultItemAnimator()
+        b.filmsRecycler.addItemDecoration(RecyclerDecoration(this, resources.getDimensionPixelSize(R.dimen.side_padding), resources.getDimensionPixelSize(R.dimen.top_padding)))
         val adapter = FilmsAdapter(this)
         b.filmsRecycler.adapter = adapter
         adapter.dataManager.init()
-        initNavigation()
+
     }
 
     private fun initNavigation() {
