@@ -22,15 +22,22 @@ class MainActivity : AppCompatActivity() {
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
         initNavigation()
-        b.filmsRecycler.layoutManager = LinearLayoutManager(this);
-        b.filmsRecycler.itemAnimator = DefaultItemAnimator()
-        b.filmsRecycler.addItemDecoration(RecyclerDecoration(this, resources.getDimensionPixelSize(R.dimen.side_padding), resources.getDimensionPixelSize(R.dimen.top_padding)))
         val adapter = FilmsAdapter(this)
-        b.filmsRecycler.adapter = adapter
         adapter.dataManager.init()
-        val touchHelper =  ItemTouchHelper(MainItemTouchHelper(adapter))
-        touchHelper.attachToRecyclerView(b.filmsRecycler)
-
+        with(b.filmsRecycler) {
+            layoutManager = LinearLayoutManager(this@MainActivity);
+            itemAnimator = DefaultItemAnimator()
+            addItemDecoration(
+                RecyclerDecoration(
+                    this@MainActivity,
+                    resources.getDimensionPixelSize(R.dimen.side_padding),
+                    resources.getDimensionPixelSize(R.dimen.top_padding)
+                )
+            )
+            this.adapter = adapter
+            val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
+            touchHelper.attachToRecyclerView(this)
+        }
     }
 
     private fun initNavigation() {
