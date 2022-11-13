@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
             layoutManager = TestLinearLayoutManager(this@MainActivity);
             itemAnimator = DefaultItemAnimator()
             recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
+            val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
+            snackbarScrollToFirst.setAction("Вернуться к началу списка"){
+                b.filmsRecycler.scrollToPosition(0)
+            }
             val test = object : RecyclerView.OnScrollListener(){
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
@@ -36,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                     val lastVisible = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                     val total = (layoutManager as RecyclerView.LayoutManager).itemCount
                     if (lastVisible >= total-2 && newState == RecyclerView.SCROLL_STATE_IDLE){
-                        Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
+                        snackbarScrollToFirst.show()
+                        //Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
                     }
                     super.onScrollStateChanged(recyclerView, newState)
                 }
@@ -53,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             this.adapter = adapter
             val touchHelper = ItemTouchHelper(MainItemTouchHelper( adapter))
             touchHelper.attachToRecyclerView(this)
+
         }
     }
 

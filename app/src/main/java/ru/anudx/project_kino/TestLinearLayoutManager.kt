@@ -52,4 +52,8 @@ class TestLinearLayoutManager(val context: Context): LinearLayoutManager(context
             }
         }
     }
+
+    override fun scrollToPosition(position: Int) {
+        super.scrollToPosition(position)
+    }
 }
