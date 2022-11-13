@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
@@ -21,9 +22,27 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
         val adapter = CommonAdapter(this)
         adapter.dataManager.init()
+
         with(b.filmsRecycler) {
-            layoutManager = LinearLayoutManager(this@MainActivity);
+            layoutManager = TestLinearLayoutManager(this@MainActivity);
             itemAnimator = DefaultItemAnimator()
+            recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
+            val test = object : RecyclerView.OnScrollListener(){
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                }
+
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    val lastVisible = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                    val total = (layoutManager as RecyclerView.LayoutManager).itemCount
+                    if (lastVisible >= total-2){
+                        Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
+                    }
+                    super.onScrollStateChanged(recyclerView, newState)
+                }
+            }
+            addOnScrollListener(test)
+            setItemViewCacheSize(1)
             addItemDecoration(
                 RecyclerDecoration(
                     this@MainActivity,
