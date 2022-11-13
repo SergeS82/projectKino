@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
             recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
             val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
             snackbarScrollToFirst.setAction("Вернуться к началу списка"){
-                b.filmsRecycler.scrollToPosition(0)
+                val i = b.nestedScroll.isSmoothScrollingEnabled
+                b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
             }
             val test = object : RecyclerView.OnScrollListener(){
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
