@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ru.anudx.project_kino.DetailsActivityFilm
+import ru.anudx.project_kino.DetailsFilmActivity
 import ru.anudx.project_kino.R
-import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.databinding.FilmsItemBinding
 import ru.anudx.project_kino.model.FilmsData
 
@@ -32,7 +31,7 @@ class FilmsAdapter(val context: Context): RecyclerView.Adapter<FilmsAdapter.View
             title.text = item.title
             description.text = item.description
             itemView.setOnClickListener {
-                val intent = Intent(context, DetailsActivityFilm()::class.java)
+                val intent = Intent(context, DetailsFilmActivity()::class.java)
                 val bundle = Bundle()
                 bundle.putParcelable("film", item)
                 intent.putExtras(bundle)
