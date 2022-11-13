@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 
 @Parcelize
-data class FilmsData(val id: Int, val title: String?, val description: String?, val image: Int): Parcelable
+data class FilmsData(override val id: Int, val title: String?, val description: String?, val image: Int): Parcelable, CommonData
 {
     constructor(parcel: Parcel): this (
         parcel.readInt(),

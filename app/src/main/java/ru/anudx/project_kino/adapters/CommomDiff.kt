@@ -1,9 +1,10 @@
 package ru.anudx.project_kino.adapters
 
 import androidx.recyclerview.widget.DiffUtil
+import ru.anudx.project_kino.model.CommonData
 import ru.anudx.project_kino.model.FilmsData
 
-class FilmsDiff(val oldList: ArrayList<FilmsData>, val newList: ArrayList<FilmsData>): DiffUtil.Callback() {
+class CommomDiff(val oldList: ArrayList<CommonData>, val newList: ArrayList<CommonData>): DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 
     override fun getNewListSize(): Int = newList.size
