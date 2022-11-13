@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     val lastVisible = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                     val total = (layoutManager as RecyclerView.LayoutManager).itemCount
-                    if (lastVisible >= total-2){
+                    if (lastVisible >= total-2 && newState == RecyclerView.SCROLL_STATE_IDLE){
                         Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
                     }
                     super.onScrollStateChanged(recyclerView, newState)
