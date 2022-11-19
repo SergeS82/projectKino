@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
@@ -37,9 +40,12 @@ class MainActivity : AppCompatActivity() {
                 val i =  v.height * Resources.getSystem().displayMetrics.density
             } // TODO: надо как-то использовать для вычисления окнца прокрутки 
 
-            snackbarScrollToFirst.setAction("Вернуться к началу списка"){
+            val action = snackbarScrollToFirst.setAction(context.getString(R.string.goto_list_top)) {
                 val i = b.nestedScroll.isSmoothScrollingEnabled
                 b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
+                val params = b.bottomMenu.layoutParams as  CoordinatorLayout.LayoutParams
+                val behavior = params.behavior as HideBottomViewOnScrollBehavior
+                behavior.slideUp(b.bottomMenu)
             }
             val test = object : RecyclerView.OnScrollListener(){
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

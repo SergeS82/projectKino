@@ -17,8 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf = "@id/tool_bar"
@@ -130,18 +130,19 @@
                 android:layout_height="match_parent" />
         </androidx.core.widget.NestedScrollView>
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_menu"
-            style="@style/background.menu_stile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:itemIconTint="@android:color/white"
-            app:itemTextColor="@android:color/white"
-            app:labelVisibilityMode="labeled"
-            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-            app:menu="@menu/navigation_menu" />
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/background.menu_stile"
+                app:menu="@menu/navigation_menu"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white"
+                app:behavior_hideable="true"
+                android:layout_gravity="bottom"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:behavior_skipCollapsed="false"
+                />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 
 
