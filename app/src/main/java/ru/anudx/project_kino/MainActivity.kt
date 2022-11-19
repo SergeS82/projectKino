@@ -74,6 +74,42 @@ class MainActivity : AppCompatActivity() {
         Log.d("debug_info","onCreate")
     }
 
+    override fun onStart() {
+        super.onStart()
+        Timber.tag("debug_log").d("onStart")
+        Log.d("debug_info","onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.tag("debug_log").d("onResume")
+        Log.d("debug_info","onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.tag("debug_log").d("onPause")
+        Log.d("debug_info","onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.tag("debug_log").d("onStop")
+        Log.d("debug_info","onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.tag("debug_log").d("onRestart")
+        Log.d("debug_info","onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.tag("debug_log").d("onDestroy")
+        Log.d("debug_info","onDestroy")
+    }
+
     private fun initNavigation() {
         b.toolBar.setOnMenuItemClickListener {
             when (it.itemId) {
