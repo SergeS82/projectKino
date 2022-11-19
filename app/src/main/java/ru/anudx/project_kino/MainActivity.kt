@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
         Timber.d("onCreate")
         Log.d("debug_info","onCreate")
+        finish()
     }
 
     override fun onStart() {
