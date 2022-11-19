@@ -3,6 +3,7 @@ package ru.anudx.project_kino
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         Timber.d("onCreate")
+        Log.d("debug_info","onCreate")
     }
 
     private fun initNavigation() {
