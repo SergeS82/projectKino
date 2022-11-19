@@ -1,8 +1,10 @@
 package ru.anudx.project_kino
 
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +31,10 @@ class MainActivity : AppCompatActivity() {
             itemAnimator = DefaultItemAnimator()
             recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
             val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
+            b.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                val i =  v.height * Resources.getSystem().displayMetrics.density
+            } // TODO: надо как-то использовать для вычисления окнца прокрутки 
+
             snackbarScrollToFirst.setAction("Вернуться к началу списка"){
                 val i = b.nestedScroll.isSmoothScrollingEnabled
                 b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
