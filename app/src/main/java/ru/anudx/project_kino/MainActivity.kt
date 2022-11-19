@@ -3,6 +3,7 @@ package ru.anudx.project_kino
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -33,22 +34,23 @@ class MainActivity : AppCompatActivity() {
             recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
             val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
             b.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                val i =  v.height * Resources.getSystem().displayMetrics.density
+                val i = v.height * Resources.getSystem().displayMetrics.density
             } // TODO: надо как-то использовать для вычисления окнца прокрутки 
 
-            snackbarScrollToFirst.setAction("Вернуться к началу списка"){
+            snackbarScrollToFirst.setAction("Вернуться к началу списка") {
                 val i = b.nestedScroll.isSmoothScrollingEnabled
                 b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
             }
-            val test = object : RecyclerView.OnScrollListener(){
+            val test = object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                 }
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    val lastVisible = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                    val lastVisible =
+                        (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                     val total = (layoutManager as RecyclerView.LayoutManager).itemCount
-                    if (lastVisible >= total-2 && newState == RecyclerView.SCROLL_STATE_IDLE){
+                    if (lastVisible >= total - 2 && newState == RecyclerView.SCROLL_STATE_IDLE) {
                         snackbarScrollToFirst.show()
                         //Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
                     }
@@ -65,11 +67,42 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             this.adapter = adapter
-            val touchHelper = ItemTouchHelper(MainItemTouchHelper( adapter))
+            val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
             touchHelper.attachToRecyclerView(this)
 
         }
-        Timber.d("onCreate")
+        Timber.tag("debug_log").d("onCreate")
+        Log.d("debug_log", "onCreate")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.tag("debug_log").d("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.tag("debug_log").d("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.tag("debug_log").d("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.tag("debug_log").d("onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.tag("debug_log").d("onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.tag("debug_log").d("onDestroy")
     }
 
     private fun initNavigation() {
