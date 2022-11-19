@@ -15,6 +15,7 @@ import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             touchHelper.attachToRecyclerView(this)
 
         }
+        Timber.d("onCreate")
     }
 
     private fun initNavigation() {
