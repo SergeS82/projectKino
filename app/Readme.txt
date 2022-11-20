@@ -1,0 +1,2 @@
+Ещё есть несколько особых методов сохранения состояния: onRetainCustomNonConfigurationInstance() и onRetainCustomNonConfigurationInstance(). Скорее всего вы не столкнетесь с этим в обозримом будущем, но иногда про это могут спросить на собеседовании, поэтому вот неплохое разъяснение.
+    https://stackoverflow.com/questions/30673331/using-onretaincustomnonconfigurationinstance-to-retain-data-across-configurati/31061177#31061177

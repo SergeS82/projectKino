@@ -130,6 +130,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        Log.d("debug_info","onRestoreInstanceState")
         b.filmsRecycler.forEach { view ->
             val holder = b.filmsRecycler.getChildViewHolder(view)
             when (holder) {
