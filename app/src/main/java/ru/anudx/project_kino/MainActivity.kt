@@ -1,5 +1,7 @@
 package ru.anudx.project_kino
 
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,9 +27,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(App.lifeCycleListener)
-        Log.d("debug_info", App.instance.objectInAppClass)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
+        Log.d("debug_info", "resources.configuration.orientation = "+resources.configuration.orientation)
+        when (resources.configuration.orientation){
+            Configuration.ORIENTATION_LANDSCAPE ->{
+                val fragmentTag = "text_fragment"
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.left_fragment, TestFragment(), fragmentTag)
+                    .addToBackStack(null)
+                    .commit()
+            }
+        }
         initNavigation()
         val adapter = CommonAdapter(this)
         adapter.dataManager.init()
