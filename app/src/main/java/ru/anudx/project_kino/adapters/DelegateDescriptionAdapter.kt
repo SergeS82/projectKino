@@ -11,15 +11,21 @@ import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.DescriptionItemBinding
 import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.DescriptionData
+import kotlin.properties.Delegates
 
 class DelegateDescriptionAdapter(val context: Context): AbsListItemAdapterDelegate<DescriptionData, InterfaceData, DelegateDescriptionAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View, val b: DescriptionItemBinding): RecyclerView.ViewHolder(itemView), InterfaceViewHolder{
         val description = b.description
+        override var id: Int = -1
+            get() = field
+            set(value) {field = value}
+
         override fun bind(item: InterfaceData) {
             when (item) {
                 is DescriptionData -> {
                     description.text = item.description
+                    id = item.id
                     b.inputText.setOnFocusChangeListener { view, hasFocuce ->
                         if (!hasFocuce) {
                             //item.description = b.inputText.text.toString()

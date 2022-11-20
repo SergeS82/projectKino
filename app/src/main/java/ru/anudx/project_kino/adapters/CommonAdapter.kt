@@ -40,7 +40,7 @@ class CommonAdapter(val context: Context): ListDelegationAdapter<List<InterfaceD
             var (j, k) = 0
             while (k < titles.size) {
                 when ((iterator+1)%3) {
-                    0 -> newData.add(DescriptionData(++iterator,"", ++j))
+                    0 -> {j+=10; newData.add(DescriptionData(++iterator,"", j))}
                     else -> newData.add(FilmsData(++iterator, titles[k], descriptions[k], images[k], ++k))
                 }
             }

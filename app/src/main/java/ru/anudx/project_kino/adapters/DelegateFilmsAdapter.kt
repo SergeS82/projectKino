@@ -20,6 +20,10 @@ class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<Fil
         val image = b.imageView
         val title = b.title
         val description = b.description
+        override var id: Int = -1
+            get() = field
+            set(value) {field = value}
+
         override fun bind(item: InterfaceData) {
             when (item) {
                 is FilmsData -> {

@@ -6,16 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.widget.NestedScrollView
+import androidx.core.view.forEach
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.adapters.CommonAdapter
-import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
+import ru.anudx.project_kino.adapters.DelegateDescriptionAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
@@ -119,6 +118,27 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.d("debug_info","onSaveInstanceState")
+        b.filmsRecycler.forEach {view ->
+            val holder = b.filmsRecycler.getChildViewHolder(view)
+            when (holder) {
+                is DelegateDescriptionAdapter.ViewHolder -> {
+                    outState.putString("description_item_"+holder.id, holder.description.text.toString())
+                }
+            }
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        b.filmsRecycler.forEach { view ->
+            val holder = b.filmsRecycler.getChildViewHolder(view)
+            when (holder) {
+                is DelegateDescriptionAdapter.ViewHolder -> {
+                    holder.description.text = savedInstanceState.getString("description_item_"+holder.id) ?: ""
+                }
+            }
+        }
+
     }
 
     private fun initNavigation() {
