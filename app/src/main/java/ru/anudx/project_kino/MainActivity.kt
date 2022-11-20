@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
         val adapter = CommonAdapter(this)
         adapter.dataManager.init()
-
         with(b.filmsRecycler) {
             layoutManager = TestLinearLayoutManager(this@MainActivity);
             itemAnimator = DefaultItemAnimator()
