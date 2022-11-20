@@ -22,8 +22,10 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
+    private val lifeCycleListener = MainActivityLifeCycleListener()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(lifeCycleListener)
         Log.d("debug_info", App.instance.objectInAppClass)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
