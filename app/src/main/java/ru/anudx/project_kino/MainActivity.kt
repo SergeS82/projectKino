@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -201,6 +202,14 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.right_fragment, frag2)
             .addToBackStack(null)
+            .commit()
+    }
+    fun startSecondFragment(img: ImageView){
+        supportFragmentManager
+            .beginTransaction()
+            .addSharedElement(img,"transition1")
+            .addToBackStack(null)
+            .replace(R.id.left_fragment,TestFragment3())
             .commit()
     }
 }
