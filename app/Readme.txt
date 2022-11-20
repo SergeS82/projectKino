@@ -13,3 +13,5 @@ Low-Memory
                                                                 < onCreate() -- apps with higher priority need memory
                                                     < onResume() -- user returns to the activity
                                                     < omCreate() -- apps with higher priority need memory
+Програмное добавление фрагментов
+    https://developer.android.com/reference/androidx/fragment/app/FragmentTransaction.html#commitAllowingStateLoss()
