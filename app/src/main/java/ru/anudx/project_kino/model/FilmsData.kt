@@ -5,12 +5,15 @@ import android.os.Parcelable
 
 
 @Parcelize
-data class FilmsData(override val id: Int, val title: String?, val description: String?, val image: Int): Parcelable, CommonData
+data class FilmsData(override val lId: Int, val title: String?, val description: String?, val image: Int,
+                     override val id: Int
+): Parcelable, InterfaceData
 {
     constructor(parcel: Parcel): this (
         parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readInt(),
         parcel.readInt()
     )
 
@@ -19,7 +22,7 @@ data class FilmsData(override val id: Int, val title: String?, val description: 
     }
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
-        p0?.writeInt(this.id)
+        p0?.writeInt(this.lId)
         p0?.writeString(this.title)
         p0?.writeString(this.description)
         p0?.writeInt(this.image)
@@ -36,7 +39,4 @@ data class FilmsData(override val id: Int, val title: String?, val description: 
     }
 
 }
-
 annotation class Parcelize
-
-

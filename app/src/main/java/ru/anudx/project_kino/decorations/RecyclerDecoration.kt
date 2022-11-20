@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.google.android.material.internal.ViewUtils.RelativePadding
 import ru.anudx.project_kino.R
+import ru.anudx.project_kino.adapters.DelegateDescriptionAdapter
+import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
+import ru.anudx.project_kino.databinding.DescriptionItemBinding
 import ru.anudx.project_kino.databinding.FilmsItemBinding
 
 class RecyclerDecoration(val context: Context, val sidePadding: Int, val topPadding: Int): ItemDecoration(){
@@ -30,12 +33,40 @@ class RecyclerDecoration(val context: Context, val sidePadding: Int, val topPadd
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         parent.forEachIndexed { i, view ->
             val position = parent.getChildAdapterPosition(view)
-            val b = FilmsItemBinding.bind(view)
-            if (position % 2 == 0){
-                b.constraint.background = ResourcesCompat.getDrawable(context.resources, R.color.card_background_light, context.theme)
-            }
-            else{
-                b.constraint.background = ResourcesCompat.getDrawable(context.resources, R.color.card_background_dark, context.theme)
+            val holder = parent.getChildViewHolder(view)
+            when (holder) {
+                is DelegateFilmsAdapter.ViewHolder -> {
+                    val b = FilmsItemBinding.bind(view)
+                    if (position % 2 == 0) {
+                        b.constraint.background = ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.color.card_background_light,
+                            context.theme
+                        )
+                    } else {
+                        b.constraint.background = ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.color.card_background_dark,
+                            context.theme
+                        )
+                    }
+                }
+                is DelegateFilmsAdapter.ViewHolder ->{
+                    val b = DescriptionItemBinding.bind(view)
+                    if (position % 2 == 0) {
+                        b.constraint.background = ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.color.card_background_light,
+                            context.theme
+                        )
+                    } else {
+                        b.constraint.background = ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.color.card_background_dark,
+                            context.theme
+                        )
+                    }
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package ru.anudx.project_kino.model
 
-interface CommonData {
+interface InterfaceData {
+    val lId: Int
     val id: Int
 }

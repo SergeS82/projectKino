@@ -6,31 +6,34 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 import ru.anudx.project_kino.DetailsFilmActivity
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.FilmsItemBinding
-import ru.anudx.project_kino.model.CommonData
+import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.FilmsData
 
-class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<FilmsData, CommonData, DelegateFilmsAdapter.ViewHolder>() {
+class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<FilmsData, InterfaceData, DelegateFilmsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView), InterfaceViewHolder{
         val image = b.imageView
         val title = b.title
         val description = b.description
-        fun bind(item: FilmsData){
-            image.setImageResource(item.image)
-            title.text = item.title
-            description.text = item.description
-            itemView.setOnClickListener {
-                val intent = Intent(context, DetailsFilmActivity()::class.java)
-                val bundle = Bundle()
-                bundle.putParcelable("film", item)
-                intent.putExtras(bundle)
-                context.startActivity(intent)
+        override fun bind(item: InterfaceData) {
+            when (item) {
+                is FilmsData -> {
+                    image.setImageResource(item.image)
+                    title.text = item.title
+                    description.text = item.description
+                    itemView.setOnClickListener {
+                        val intent = Intent(context, DetailsFilmActivity()::class.java)
+                        val bundle = Bundle()
+                        bundle.putParcelable("film", item)
+                        intent.putExtras(bundle)
+                        context.startActivity(intent)
+                    }
+                }
             }
         }
     }
@@ -50,8 +53,8 @@ class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<Fil
     }
 
     override fun isForViewType(
-        item: CommonData,
-        items: MutableList<CommonData>,
+        item: InterfaceData,
+        items: MutableList<InterfaceData>,
         position: Int
     ): Boolean {
         return item is FilmsData

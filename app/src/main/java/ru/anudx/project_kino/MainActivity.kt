@@ -116,6 +116,11 @@ class MainActivity : AppCompatActivity() {
         Log.d("debug_info","onDestroy")
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("debug_info","onSaveInstanceState")
+    }
+
     private fun initNavigation() {
         b.toolBar.setOnMenuItemClickListener {
             when (it.itemId) {
