@@ -1,14 +1,16 @@
 package ru.anudx.project_kino
 
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.FrameLayout
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.forEach
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.adapters.DelegateDescriptionAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
+import ru.anudx.project_kino.databinding.FragmentTestBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
 import timber.log.Timber
@@ -29,13 +32,19 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(App.lifeCycleListener)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
-        Log.d("debug_info", "resources.configuration.orientation = "+resources.configuration.orientation)
-        when (resources.configuration.orientation){
-            Configuration.ORIENTATION_LANDSCAPE ->{
-                val fragmentTag = "text_fragment"
+        when (resources.configuration.orientation) {
+            Configuration.ORIENTATION_LANDSCAPE -> {
+                val leftFragmentTag = "left_fragment_in"
                 supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.left_fragment, TestFragment(), fragmentTag)
+                    .add(R.id.left_fragment, TestFragment(),leftFragmentTag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss()
+                val rightFragmentTag = "right_fragment_in"
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.right_fragment, TestFragment2(), rightFragmentTag)
                     .addToBackStack(null)
                     .commit()
             }
@@ -182,5 +191,16 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    fun passData(editext: String) {
+        val bundle = Bundle()
+        bundle.putString("2fragment2", editext)
+        val frag2 = TestFragment2()
+        frag2.arguments = bundle
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.right_fragment, frag2)
+            .addToBackStack(null)
+            .commit()
     }
 }

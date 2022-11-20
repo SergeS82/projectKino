@@ -8,9 +8,16 @@
     style="@style/layout_container">
     <FrameLayout
         android:id="@+id/left_fragment"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <FrameLayout
+        android:id="@+id/right_fragment"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -20,7 +27,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf = "parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/right_fragment"
         app:layout_constraintStart_toEndOf="@+id/left_fragment">
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
