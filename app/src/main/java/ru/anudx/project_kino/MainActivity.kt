@@ -181,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         b.bottomMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_favorites -> {
-                    Toast.makeText(this, R.string.btn_favorites, Toast.LENGTH_SHORT).show()
+                    DialogFragment1().show(supportFragmentManager,"dialog1")
                     true
                 }
                 R.id.menu_later -> {
