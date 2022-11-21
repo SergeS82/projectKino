@@ -25,6 +25,7 @@ import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
 import timber.log.Timber
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
@@ -36,6 +37,14 @@ class MainActivity : AppCompatActivity() {
         OrientationInit()
         initNavigation()
         initRecyclerView()
+    }
+    companion object {
+        val calendar = Calendar.getInstance()
+        val currentYear = calendar.get(Calendar.YEAR)
+        val currentMonth = calendar.get(Calendar.MONTH)
+        val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+        val currentMinute = calendar.get(Calendar.MINUTE)
     }
 
     private fun OrientationInit() {
