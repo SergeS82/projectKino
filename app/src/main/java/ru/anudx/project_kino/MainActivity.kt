@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ScrollView
@@ -227,6 +228,8 @@ class MainActivity : AppCompatActivity() {
             }
             .setNeutralButton(R.string.i_dont_know){ _, _->
 
-            }.show()
+            }
+            .setView(EditText(this))
+            .show()
     }
 }
