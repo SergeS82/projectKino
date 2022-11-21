@@ -11,6 +11,7 @@
     <string name="i_dont_know">Не знаю</string>
     <string name="double_press_for_exit">Для выхода нажмите еще раз!</string>
     <string name="main_fragment_tag">main_fragment</string>
+    <string name="detail_fragment_tag">detail_fragment</string>
     <string-array name="films_title">
         <item>Убить Билла v.1</item>
         <item>Однажда в голивуде</item>

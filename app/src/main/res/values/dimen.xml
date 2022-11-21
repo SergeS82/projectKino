@@ -6,4 +6,5 @@
     <dimen name="corner_radius">15dp</dimen>
     <dimen name="side_padding">8dp</dimen>
     <dimen name="top_padding">8dp</dimen>
+    <dimen name="long_text">15sp</dimen>
 </resources>

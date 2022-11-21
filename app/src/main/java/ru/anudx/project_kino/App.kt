@@ -16,5 +16,6 @@ class App: Application() {
             private set
         lateinit var lifeCycleListener: LifecycleObserver
             private set
+        lateinit var mainContext: MainFragmentActivity
     }
 }
