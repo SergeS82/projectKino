@@ -6,179 +6,144 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     style="@style/layout_container">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/up_menu"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_menu"
+        app:menu="@menu/up_menu"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/menu"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/background.menu_stile">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/up_menu"
-            app:navigationIcon="@drawable/ic_menu"
-            app:title="Search it!"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_menu"
-        style="@style/background.menu_stile"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation_menu" />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/up_preview"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/posters_menu"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginRight="@dimen/default_margin"
-        app:cardBackgroundColor="@color/purple_500"
-        app:cardCornerRadius="@dimen/corner_radius"
-        app:cardElevation="@dimen/corner_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/up_menu"
-        android:padding="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:baselineAligned="true"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent">
-                <ImageView
-                    android:id="@+id/image_view"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/killbillv1" />
-
-                <ImageView
-                    android:id="@+id/image_view2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/pulpfiction" />
-
-                <ImageView
-                    android:id="@+id/image_view3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/onceinhollywood" />
-
-                <ImageView
-                    android:id="@+id/image_view4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/thehatefulleight" />
-            </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:clickable="true"
-        android:text="@string/ownership"
-        android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@+id/up_preview"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/default_margin"/>
-    <GridLayout
+        />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/default_margin"
-        android:columnCount="2"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true"
-        app:layout_constraintTop_toBottomOf="@+id/text_view"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layoutAnimation="@anim/anim_layout">
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
+        app:layout_constraintTop_toBottomOf = "@id/tool_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:fitsSystemWindows="true"
+            android:background="@color/menu"
             >
-            <ImageView
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/killbillv1"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
+                android:fitsSystemWindows="true"
+                android:minHeight="60dp"
+                app:toolbarId="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_collapseMode = "parallax"
+                    android:orientation="horizontal"
+                    android:layout_gravity="top">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/text_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.25"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:background="@color/menu"
+                        android:src="@drawable/killbillv1"
+                        app:layout_collapseMode = "parallax" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.25"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:background="@color/menu"
+                        android:src="@drawable/onceinhollywood"
+                        app:layout_collapseMode = "parallax" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.25"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:background="@color/menu"
+                        android:src="@drawable/pulpfiction"
+                        app:layout_collapseMode = "parallax" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.25"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:background="@color/menu"
+                        android:src="@drawable/thehatefulleight"
+                        app:layout_collapseMode = "parallax" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:clickable="true"
+                    android:text="@string/ownership"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/ctoolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode = "pin"
+                    android:layout_gravity="bottom"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_gravity="top"
+            app:layout_constraintStart_toStartOf="parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/films_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/pulpfiction"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
+                android:layout_height="match_parent" />
+        </androidx.core.widget.NestedScrollView>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_menu"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/onceinhollywood"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
+                android:layout_height="wrap_content"
+                style="@style/background.menu_stile"
+                app:menu="@menu/navigation_menu"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white"
+                app:behavior_hideable="true"
+                android:layout_gravity="bottom"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:behavior_skipCollapsed="false"
                 />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="@dimen/corner_radius"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="0.25"
-            android:layout_columnWeight="0.25"
-            app:cardBackgroundColor="@color/white_0"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/thehatefulleight"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                android:stateListAnimator="@animator/animator_press_button"
-                />
-        </androidx.cardview.widget.CardView>
-    </GridLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
