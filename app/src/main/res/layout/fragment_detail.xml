@@ -58,7 +58,8 @@
 
     <include
         android:id="@+id/scrolling_text"
-        layout="@layout/content_scrolling" />
+        layout="@layout/content_scrolling"
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
