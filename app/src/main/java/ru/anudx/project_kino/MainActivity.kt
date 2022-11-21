@@ -6,12 +6,8 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.ContextThemeWrapper
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.forEach
 import androidx.fragment.app.FragmentTransaction
@@ -37,10 +33,11 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(App.lifeCycleListener)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
-        OrientationInit()
+        orientationInit()
         initNavigation()
         initRecyclerView()
     }
+
     companion object {
         val calendar = Calendar.getInstance()
         val currentYear = calendar.get(Calendar.YEAR)
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         const val TIME_INTERVAL_2S = 2000
     }
 
-    private fun OrientationInit() {
+    private fun orientationInit() {
         when (resources.configuration.orientation) {
             Configuration.ORIENTATION_LANDSCAPE -> {
                 val leftFragmentTag = "left_fragment_in"
@@ -59,13 +56,11 @@ class MainActivity : AppCompatActivity() {
                     .beginTransaction()
                     .add(R.id.left_fragment, TestFragment(), leftFragmentTag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .addToBackStack(null)
                     .commitAllowingStateLoss()
                 val rightFragmentTag = "right_fragment_in"
                 supportFragmentManager
                     .beginTransaction()
                     .add(R.id.right_fragment, TestFragment2(), rightFragmentTag)
-                    .addToBackStack(null)
                     .commit()
             }
         }
@@ -155,11 +150,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        b.filmsRecycler.forEach {view ->
+        b.filmsRecycler.forEach { view ->
             val holder = b.filmsRecycler.getChildViewHolder(view)
             when (holder) {
                 is DelegateDescriptionAdapter.ViewHolder -> {
-                    outState.putString("description_item_"+holder.id, holder.description.text.toString())
+                    outState.putString(
+                        "description_item_" + holder.id,
+                        holder.description.text.toString()
+                    )
                 }
             }
         }
@@ -171,7 +169,8 @@ class MainActivity : AppCompatActivity() {
             val holder = b.filmsRecycler.getChildViewHolder(view)
             when (holder) {
                 is DelegateDescriptionAdapter.ViewHolder -> {
-                    holder.description.text = savedInstanceState.getString("description_item_"+holder.id) ?: ""
+                    holder.description.text =
+                        savedInstanceState.getString("description_item_" + holder.id) ?: ""
                 }
             }
         }
@@ -191,36 +190,59 @@ class MainActivity : AppCompatActivity() {
         b.bottomMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_favorites -> {
-                    DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        val time = "$year/${month+1}/$dayOfMonth"
-                        b.toolBar.title = time
-                    }, currentYear, currentMonth, currentHour).show()
+                    DatePickerDialog(
+                        this,
+                        DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                            val time = "$year/${month + 1}/$dayOfMonth"
+                            b.toolBar.title = time
+                        },
+                        currentYear,
+                        currentMonth,
+                        currentHour
+                    ).show()
                     true
                 }
                 R.id.menu_later -> {
                     calendar
-                    TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hour, minute ->
-                        val time = "$hour : $minute"
-                        b.toolBar.title = time
-                    }
-                        , calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true).show()
+                    TimePickerDialog(
+                        this,
+                        TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                            val time = "$hour : $minute"
+                            b.toolBar.title = time
+                        },
+                        calendar.get(Calendar.HOUR_OF_DAY),
+                        calendar.get(Calendar.MINUTE),
+                        true
+                    ).show()
                     true
                 }
                 R.id.menu_library -> {
-                    DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        val date = "$year/${month+1}/$dayOfMonth"
-                        TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hour, minute ->
-                            val time = "$date $hour : $minute"
-                            b.toolBar.title = time
-                        }
-                            , calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true).show()
-                    }, currentYear, currentMonth, currentHour).show()
+                    DatePickerDialog(
+                        this,
+                        DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                            val date = "$year/${month + 1}/$dayOfMonth"
+                            TimePickerDialog(
+                                this,
+                                TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                                    val time = "$date $hour : $minute"
+                                    b.toolBar.title = time
+                                },
+                                calendar.get(Calendar.HOUR_OF_DAY),
+                                calendar.get(Calendar.MINUTE),
+                                true
+                            ).show()
+                        },
+                        currentYear,
+                        currentMonth,
+                        currentHour
+                    ).show()
                     true
                 }
                 else -> false
             }
         }
     }
+
     fun passData(editext: String) {
         val bundle = Bundle()
         bundle.putString("2fragment2", editext)
@@ -232,22 +254,28 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
-    fun startSecondFragment(img: ImageView){
+
+    fun startSecondFragment(img: ImageView) {
         supportFragmentManager
             .beginTransaction()
-            .addSharedElement(img,"transition1")
+            .addSharedElement(img, "transition1")
             .addToBackStack(null)
-            .replace(R.id.left_fragment,TestFragment3())
+            .replace(R.id.left_fragment, TestFragment3())
             .commit()
     }
 
     override fun onBackPressed() {
-        if (timeBackPressed+ TIME_INTERVAL_2S > System.currentTimeMillis()){
-            super.onBackPressed()
-            finish()
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            if (timeBackPressed + TIME_INTERVAL_2S > System.currentTimeMillis()) {
+                super.onBackPressed()
+                finish()
+            } else {
+                Toast.makeText(this, R.string.double_press_for_exit, Toast.LENGTH_SHORT).show()
+            }
+            timeBackPressed = System.currentTimeMillis()
         }else{
-            Toast.makeText(this, R.string.double_press_for_exit, Toast.LENGTH_SHORT).show()
+            super.onBackPressed()
         }
-        timeBackPressed = System.currentTimeMillis()
+
     }
 }
