@@ -1,5 +1,7 @@
 package ru.anudx.project_kino
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
@@ -187,15 +189,30 @@ class MainActivity : AppCompatActivity() {
         b.bottomMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_favorites -> {
-                    DialogFragment1().show(supportFragmentManager,"dialog1")
+                    DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                        val time = "$year/${month+1}/$dayOfMonth"
+                        b.toolBar.title = time
+                    }, currentYear, currentMonth, currentHour).show()
                     true
                 }
                 R.id.menu_later -> {
-                    Toast.makeText(this, R.string.btn_later, Toast.LENGTH_SHORT).show()
+                    calendar
+                    TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                        val time = "$hour : $minute"
+                        b.toolBar.title = time
+                    }
+                        , calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true).show()
                     true
                 }
                 R.id.menu_library -> {
-                    Toast.makeText(this, R.string.btn_library, Toast.LENGTH_SHORT).show()
+                    DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                        val date = "$year/${month+1}/$dayOfMonth"
+                        TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                            val time = "$date $hour : $minute"
+                            b.toolBar.title = time
+                        }
+                            , calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true).show()
+                    }, currentYear, currentMonth, currentHour).show()
                     true
                 }
                 else -> false

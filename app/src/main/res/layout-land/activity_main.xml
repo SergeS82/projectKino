@@ -19,7 +19,8 @@
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
@@ -36,24 +37,25 @@
             android:fitsSystemWindows="true"
             android:background="@color/menu"
             >
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            android:minHeight="60dp"
-            app:toolbarId="@+id/toolbar"
-            app:layout_scrollFlags="scroll|enterAlways">
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/tool_bar"
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_menu"
-                app:menu="@menu/up_menu"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                android:background="@color/menu"
-                />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:minHeight="60dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:toolbarId="@+id/toolbar">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/menu"
+                    app:menu="@menu/up_menu"
+                    app:navigationIcon="@drawable/ic_menu"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll"
