@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(b.root)
         orientationInit()
         initNavigation()
-        initRecyclerView()
+        //initRecyclerView()
     }
 
     companion object {
@@ -54,57 +54,57 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerView() {
-        val adapter = CommonAdapter(this)
-        adapter.dataManager.init()
-        with(b.filmsRecycler) {
-            layoutManager = TestLinearLayoutManager(this@MainActivity);
-            itemAnimator = DefaultItemAnimator()
-            recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
-            val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
-            b.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                val i = v.height * Resources.getSystem().displayMetrics.density
-            } // TODO: надо как-то использовать для вычисления окнца прокрутки
-
-            val action =
-                snackbarScrollToFirst.setAction(context.getString(R.string.goto_list_top)) {
-                    val i = b.nestedScroll.isSmoothScrollingEnabled
-                    b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
-                    val params = b.bottomMenu.layoutParams as CoordinatorLayout.LayoutParams
-                    val behavior = params.behavior as HideBottomViewOnScrollBehavior
-                    behavior.slideUp(b.bottomMenu)
-                }
-            val test = object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                }
-
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    val lastVisible =
-                        (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
-                    val total = (layoutManager as RecyclerView.LayoutManager).itemCount
-                    if (lastVisible >= total - 2 && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        snackbarScrollToFirst.show()
-                        //Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
-                    }
-                    super.onScrollStateChanged(recyclerView, newState)
-                }
-            }
-            addOnScrollListener(test)
-            setItemViewCacheSize(1)
-            addItemDecoration(
-                RecyclerDecoration(
-                    this@MainActivity,
-                    resources.getDimensionPixelSize(R.dimen.side_padding),
-                    resources.getDimensionPixelSize(R.dimen.top_padding)
-                )
-            )
-            this@with.adapter = adapter
-            val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
-            touchHelper.attachToRecyclerView(this)
-
-        }
-    }
+//    private fun initRecyclerView() {
+//        val adapter = CommonAdapter(this)
+//        adapter.dataManager.init()
+//        with(b.filmsRecycler) {
+//            layoutManager = TestLinearLayoutManager(this@MainActivity);
+//            itemAnimator = DefaultItemAnimator()
+//            recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
+//            val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
+//            b.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+//                val i = v.height * Resources.getSystem().displayMetrics.density
+//            } // TODO: надо как-то использовать для вычисления окнца прокрутки
+//
+//            val action =
+//                snackbarScrollToFirst.setAction(context.getString(R.string.goto_list_top)) {
+//                    val i = b.nestedScroll.isSmoothScrollingEnabled
+//                    b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
+//                    val params = b.bottomMenu.layoutParams as CoordinatorLayout.LayoutParams
+//                    val behavior = params.behavior as HideBottomViewOnScrollBehavior
+//                    behavior.slideUp(b.bottomMenu)
+//                }
+//            val test = object : RecyclerView.OnScrollListener() {
+//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    super.onScrolled(recyclerView, dx, dy)
+//                }
+//
+//                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                    val lastVisible =
+//                        (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+//                    val total = (layoutManager as RecyclerView.LayoutManager).itemCount
+//                    if (lastVisible >= total - 2 && newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                        snackbarScrollToFirst.show()
+//                        //Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
+//                    }
+//                    super.onScrollStateChanged(recyclerView, newState)
+//                }
+//            }
+//            addOnScrollListener(test)
+//            setItemViewCacheSize(1)
+//            addItemDecoration(
+//                RecyclerDecoration(
+//                    this@MainActivity,
+//                    resources.getDimensionPixelSize(R.dimen.side_padding),
+//                    resources.getDimensionPixelSize(R.dimen.top_padding)
+//                )
+//            )
+//            this@with.adapter = adapter
+//            val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
+//            touchHelper.attachToRecyclerView(this)
+//
+//        }
+//    }
 
     override fun onStart() {
         super.onStart()

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adapters.MainFragment"
+    style="@style/layout_container">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_menu"
+        app:menu="@menu/up_menu"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/menu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf = "@id/tool_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:fitsSystemWindows="true"
+            android:background="@color/menu"
+            >
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:minHeight="60dp"
+                app:toolbarId="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_collapseMode = "parallax"
+                    android:orientation="horizontal"
+                    android:layout_gravity="top">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/text_view"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.25"
+                            android:fitsSystemWindows="true"
+                            android:scaleType="centerCrop"
+                            android:background="@color/menu"
+                            android:src="@drawable/killbillv1"
+                            app:layout_collapseMode = "parallax" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.25"
+                            android:fitsSystemWindows="true"
+                            android:scaleType="centerCrop"
+                            android:background="@color/menu"
+                            android:src="@drawable/onceinhollywood"
+                            app:layout_collapseMode = "parallax" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.25"
+                            android:fitsSystemWindows="true"
+                            android:scaleType="centerCrop"
+                            android:background="@color/menu"
+                            android:src="@drawable/pulpfiction"
+                            app:layout_collapseMode = "parallax" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.25"
+                            android:fitsSystemWindows="true"
+                            android:scaleType="centerCrop"
+                            android:background="@color/menu"
+                            android:src="@drawable/thehatefulleight"
+                            app:layout_collapseMode = "parallax" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoLink="web"
+                        android:clickable="true"
+                        android:text="@string/ownership"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/default_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/ctoolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode = "pin"
+                    android:layout_gravity="bottom"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_gravity="top"
+            app:layout_constraintStart_toStartOf="parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/films_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.core.widget.NestedScrollView>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/background.menu_stile"
+            app:menu="@menu/navigation_menu"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
+            app:behavior_hideable="true"
+            android:layout_gravity="bottom"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+            app:behavior_skipCollapsed="false"
+            />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
