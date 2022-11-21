@@ -11,6 +11,9 @@ class MainFragmentActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var b: ActivityMainFragmentBinding
     private var timeBackPressed = 0L
+    companion object{
+        val TIME_INTERVAL_2S = 2000
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,7 @@ class MainFragmentActivity : AppCompatActivity() {
     }
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 0) {
-            if (timeBackPressed + MainActivity.TIME_INTERVAL_2S > System.currentTimeMillis()) {
+            if (timeBackPressed + TIME_INTERVAL_2S > System.currentTimeMillis()) {
                 super.onBackPressed()
                 finish()
             } else {
@@ -34,6 +37,5 @@ class MainFragmentActivity : AppCompatActivity() {
         }else{
             super.onBackPressed()
         }
-
     }
 }
