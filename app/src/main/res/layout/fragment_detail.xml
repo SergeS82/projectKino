@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/corner_background"
-    tools:context=".DetailFragment">
+    tools:context=".fragments.DetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -20,10 +20,11 @@
             android:fitsSystemWindows="true"
             android:minHeight="60dp"
             app:contentScrim="@android:color/holo_red_dark"
+            app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Тут должно быть название фильма"
-            app:expandedTitleTextColor="@color/white"
             app:toolbarId="@+id/toolbar">
+
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
@@ -41,7 +42,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

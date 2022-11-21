@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
-import ru.anudx.project_kino.databinding.ActivityMainFragmentBinding
+import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.fragments.MainFragment
 
-class MainFragmentActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var b: ActivityMainFragmentBinding
+    private lateinit var b: ActivityMainBinding
     private var timeBackPressed = 0L
     companion object{
         val TIME_INTERVAL_2S = 2000
@@ -18,7 +18,7 @@ class MainFragmentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        b = ActivityMainFragmentBinding.inflate(layoutInflater)
+        b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
         App.mainContext = this
         supportFragmentManager

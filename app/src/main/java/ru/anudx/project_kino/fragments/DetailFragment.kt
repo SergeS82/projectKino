@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import ru.anudx.project_kino.App
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.FragmentDetailBinding
+import ru.anudx.project_kino.model.FilmsData
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,8 +45,9 @@ class DetailFragment() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
         b = FragmentDetailBinding.bind(view)
-        b.toolbarLayout.title = arguments?.getString("TitleToDetail")
-        arguments?.getInt("ImageToDetail")?.let { b.image.setImageResource(it) }
+        val data = arguments?.getParcelable<FilmsData>("FilmsData")
+        b.toolbarLayout.title = data?.title
+        data?.image?.let { b.image.setImageResource(it) }
         return view
     }
 

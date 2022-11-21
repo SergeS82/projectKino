@@ -1,4 +1,4 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.fragments
 
 import android.content.Context
 import android.graphics.Rect
