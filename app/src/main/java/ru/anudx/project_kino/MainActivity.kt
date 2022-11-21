@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +22,6 @@ import com.google.android.material.snackbar.Snackbar
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.adapters.DelegateDescriptionAdapter
 import ru.anudx.project_kino.databinding.ActivityMainBinding
-import ru.anudx.project_kino.databinding.FragmentTestBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
 import timber.log.Timber
@@ -36,12 +33,18 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(App.lifeCycleListener)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
+        OrientationInit()
+        initNavigation()
+        initRecyclerView()
+    }
+
+    private fun OrientationInit() {
         when (resources.configuration.orientation) {
             Configuration.ORIENTATION_LANDSCAPE -> {
                 val leftFragmentTag = "left_fragment_in"
                 supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.left_fragment, TestFragment(),leftFragmentTag)
+                    .add(R.id.left_fragment, TestFragment(), leftFragmentTag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .addToBackStack(null)
                     .commitAllowingStateLoss()
@@ -53,7 +56,9 @@ class MainActivity : AppCompatActivity() {
                     .commit()
             }
         }
-        initNavigation()
+    }
+
+    private fun initRecyclerView() {
         val adapter = CommonAdapter(this)
         adapter.dataManager.init()
         with(b.filmsRecycler) {
@@ -62,25 +67,27 @@ class MainActivity : AppCompatActivity() {
             recycledViewPool.setMaxRecycledViews(R.layout.films_item, 1)
             val snackbarScrollToFirst = Snackbar.make(b.root, "", Snackbar.LENGTH_SHORT)
             b.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                val i =  v.height * Resources.getSystem().displayMetrics.density
-            } // TODO: надо как-то использовать для вычисления окнца прокрутки 
+                val i = v.height * Resources.getSystem().displayMetrics.density
+            } // TODO: надо как-то использовать для вычисления окнца прокрутки
 
-            val action = snackbarScrollToFirst.setAction(context.getString(R.string.goto_list_top)) {
-                val i = b.nestedScroll.isSmoothScrollingEnabled
-                b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
-                val params = b.bottomMenu.layoutParams as  CoordinatorLayout.LayoutParams
-                val behavior = params.behavior as HideBottomViewOnScrollBehavior
-                behavior.slideUp(b.bottomMenu)
-            }
-            val test = object : RecyclerView.OnScrollListener(){
+            val action =
+                snackbarScrollToFirst.setAction(context.getString(R.string.goto_list_top)) {
+                    val i = b.nestedScroll.isSmoothScrollingEnabled
+                    b.nestedScroll.smoothScrollBy(0, -b.nestedScroll.scrollY)
+                    val params = b.bottomMenu.layoutParams as CoordinatorLayout.LayoutParams
+                    val behavior = params.behavior as HideBottomViewOnScrollBehavior
+                    behavior.slideUp(b.bottomMenu)
+                }
+            val test = object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                 }
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    val lastVisible = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                    val lastVisible =
+                        (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                     val total = (layoutManager as RecyclerView.LayoutManager).itemCount
-                    if (lastVisible >= total-2 && newState == RecyclerView.SCROLL_STATE_IDLE){
+                    if (lastVisible >= total - 2 && newState == RecyclerView.SCROLL_STATE_IDLE) {
                         snackbarScrollToFirst.show()
                         //Toast.makeText(this@MainActivity, "qwerty", Toast.LENGTH_SHORT).show()
                     }
@@ -97,53 +104,44 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             this.adapter = adapter
-            val touchHelper = ItemTouchHelper(MainItemTouchHelper( adapter))
+            val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
             touchHelper.attachToRecyclerView(this)
 
         }
-        Timber.d("onCreate")
-        Log.d("debug_info","onCreate")
     }
 
     override fun onStart() {
         super.onStart()
         Timber.tag("debug_log").d("onStart")
-        Log.d("debug_info","onStart")
     }
 
     override fun onResume() {
         super.onResume()
         Timber.tag("debug_log").d("onResume")
-        Log.d("debug_info","onResume")
     }
 
     override fun onPause() {
         super.onPause()
         Timber.tag("debug_log").d("onPause")
-        Log.d("debug_info","onPause")
     }
 
     override fun onStop() {
         super.onStop()
         Timber.tag("debug_log").d("onStop")
-        Log.d("debug_info","onStop")
     }
 
     override fun onRestart() {
         super.onRestart()
         Timber.tag("debug_log").d("onRestart")
-        Log.d("debug_info","onRestart")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Timber.tag("debug_log").d("onDestroy")
-        Log.d("debug_info","onDestroy")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.d("debug_info","onSaveInstanceState")
         b.filmsRecycler.forEach {view ->
             val holder = b.filmsRecycler.getChildViewHolder(view)
             when (holder) {
@@ -156,7 +154,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        Log.d("debug_info","onRestoreInstanceState")
         b.filmsRecycler.forEach { view ->
             val holder = b.filmsRecycler.getChildViewHolder(view)
             when (holder) {
