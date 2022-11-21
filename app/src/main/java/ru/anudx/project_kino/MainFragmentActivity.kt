@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainFragmentBinding
+import ru.anudx.project_kino.fragments.MainFragment
 
 class MainFragmentActivity : AppCompatActivity() {
 

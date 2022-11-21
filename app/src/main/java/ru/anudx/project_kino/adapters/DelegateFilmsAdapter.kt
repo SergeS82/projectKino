@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 import ru.anudx.project_kino.*
 import ru.anudx.project_kino.databinding.FilmsItemBinding
+import ru.anudx.project_kino.fragments.DetailFragment
 import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.FilmsData
 

@@ -1,4 +1,4 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ru.anudx.project_kino.App
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.FragmentDetailBinding
 

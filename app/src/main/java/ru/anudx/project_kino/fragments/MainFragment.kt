@@ -1,4 +1,4 @@
-package ru.anudx.project_kino
+package ru.anudx.project_kino.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
+import ru.anudx.project_kino.App
+import ru.anudx.project_kino.R
+import ru.anudx.project_kino.TestLinearLayoutManager
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.databinding.FragmentMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
