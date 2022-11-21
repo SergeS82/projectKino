@@ -6,6 +6,9 @@
     <string name="btn_library">ПОДБОРКИ</string>
     <string name="btn_settings">НАСТРОЙКИ</string>
     <string name="ownership">Постеры предоставлены https://www.movieposters.com</string>
+    <string name="Yes">Да</string>
+    <string name="No">Нет</string>
+    <string name="i_dont_know">Не знаю</string>
     <string-array name="films_title">
         <item>Убить Билла v.1</item>
         <item>Однажда в голивуде</item>

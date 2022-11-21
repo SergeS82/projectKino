@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.forEach
 import androidx.fragment.app.FragmentTransaction
@@ -211,5 +212,20 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .replace(R.id.left_fragment,TestFragment3())
             .commit()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        AlertDialog.Builder(this).setTitle("Вы хотите выйти?")
+            .setIcon(R.drawable.ic_baseline_warning_amber_24)
+            .setPositiveButton(R.string.Yes){ _, _ ->
+
+            }
+            .setNegativeButton(R.string.No){ _, _ ->
+
+            }
+            .setNeutralButton(R.string.i_dont_know){ _, _->
+
+            }.show()
     }
 }
