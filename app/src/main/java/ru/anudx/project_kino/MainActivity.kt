@@ -31,6 +31,7 @@ import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
+    private var timeBackPressed = 0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(App.lifeCycleListener)
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
         val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
         val currentMinute = calendar.get(Calendar.MINUTE)
+        const val TIME_INTERVAL_2S = 2000
     }
 
     private fun OrientationInit() {
@@ -240,19 +242,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        AlertDialog.Builder(ContextThemeWrapper(this, R.style.layout_container)).setTitle("Вы хотите выйти?")
-            .setIcon(R.drawable.ic_baseline_warning_amber_24)
-            .setPositiveButton(R.string.Yes){ _, _ ->
-
-            }
-            .setNegativeButton(R.string.No){ _, _ ->
-
-            }
-            .setNeutralButton(R.string.i_dont_know){ _, _->
-
-            }
-            .setView(EditText(this))
-            .show()
+        if (timeBackPressed+ TIME_INTERVAL_2S > System.currentTimeMillis()){
+            super.onBackPressed()
+            finish()
+        }else{
+            Toast.makeText(this, R.string.double_press_for_exit, Toast.LENGTH_SHORT).show()
+        }
+        timeBackPressed = System.currentTimeMillis()
     }
 }
