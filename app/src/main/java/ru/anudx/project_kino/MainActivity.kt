@@ -5,6 +5,7 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ScrollView
@@ -216,7 +217,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        AlertDialog.Builder(this).setTitle("Вы хотите выйти?")
+        AlertDialog.Builder(ContextThemeWrapper(this, R.style.layout_container)).setTitle("Вы хотите выйти?")
             .setIcon(R.drawable.ic_baseline_warning_amber_24)
             .setPositiveButton(R.string.Yes){ _, _ ->
 
