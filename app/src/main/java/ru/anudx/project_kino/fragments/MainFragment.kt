@@ -106,6 +106,10 @@ class MainFragment() : Fragment() {
             when (it.itemId) {
                 R.id.menu_favorites -> {
                     val intent = Intent(mainContext, DetailActivity::class.java)
+                    val bundle = Bundle()
+                    bundle.putInt("image",R.drawable.onceinhollywood)
+                    bundle.putString("title", resources.getString(R.string.i_dont_know))
+                    intent.putExtra("bundle", bundle)
                     startActivity(intent)
                     true
                 }
