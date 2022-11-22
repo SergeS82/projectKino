@@ -9,5 +9,11 @@ class ReturnActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val b = ActivityReturnBinding.inflate(layoutInflater)
         setContentView(b.root)
+        setSupportActionBar(b.toolBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        b.toolBar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
     }
 }
