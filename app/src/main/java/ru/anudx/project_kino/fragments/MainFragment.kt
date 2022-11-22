@@ -117,7 +117,6 @@ class MainFragment() : Fragment() {
                 R.id.menu_later -> {
                     val intent = Intent(mainContext, ReturnActivity::class.java)
                     startActivity(intent)
-                    mainContext.finish()
                     true
                 }
                 else -> true
