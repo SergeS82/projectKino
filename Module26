@@ -34,3 +34,4 @@ Parcelize
 https://medium.com/the-lazy-coders-journal/easy-parcelable-in-kotlin-the-lazy-coders-way-9683122f4c00
 Serialization
 https://kotlinlang.org/docs/serialization.html
+@Parcelize - классы могу включать в себя другие дата классы тоже должны быть @Parcelize
