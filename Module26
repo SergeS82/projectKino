@@ -21,3 +21,9 @@ val bundle = Bundle()
     val intent = Intent(this, AntotherActivity::class.java)
     intent.putExtra("bundle", bundle)
     startActivity(intent)
+onCreate(savedInstanceState: Bundle?)
+    val bundle = intent.extras?.getBundle("bundle")
+    if (bundle != null){
+        println(bundle.getString("b1"), "not string in b1")
+        .....
+    }
