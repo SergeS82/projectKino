@@ -11,3 +11,13 @@
 Интент — это объект-сообщение, который мы можем использовать, чтобы запросить действие у другого компонента приложения.
     val intent = Intent(this, AntotherActivity::class.java)
     startActivity(intent)
+val bundle = Bundle()
+    bundle.putString("b1", "I'm string from b1")
+    bundle.putInt("b2", 2)
+    bundle.putLong("b3", 3L)
+    bundle.putStringArrayList("b4", arrayListOf("one", "two", "three"))
+    bundle.putIntegerArrayList("b4", arrayListOf(1, 2, 3))
+
+    val intent = Intent(this, AntotherActivity::class.java)
+    intent.putExtra("bundle", bundle)
+    startActivity(intent)
