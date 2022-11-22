@@ -1,7 +1,7 @@
 package ru.anudx.project_kino.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import ru.anudx.project_kino.App
+import ru.anudx.project_kino.DetailActivity
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.databinding.FragmentMainBinding
@@ -26,26 +27,22 @@ class MainFragment() : Fragment() {
         FragmentMainBinding.bind(this.requireView())
     }
     private val mainContext = App.mainContext
-    init {
-        Log.d("main_fragment", "init")
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("main_fragment", "onCreate")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("main_fragment", "onCreateView")
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onStart() {
         super.onStart()
         initRecyclerView()
+        initNavigation()
     }
 
     companion object {
@@ -102,6 +99,18 @@ class MainFragment() : Fragment() {
             this@with.adapter = adapter
             val touchHelper = ItemTouchHelper(MainItemTouchHelper(adapter))
             touchHelper.attachToRecyclerView(this)
+        }
+    }
+    fun initNavigation(){
+        b.bottomMenu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_favorites -> {
+                    val intent = Intent(mainContext, DetailActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> true
+            }
         }
     }
 
