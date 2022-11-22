@@ -15,6 +15,7 @@ import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import ru.anudx.project_kino.App
 import ru.anudx.project_kino.DetailActivity
 import ru.anudx.project_kino.R
+import ru.anudx.project_kino.ReturnActivity
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.databinding.FragmentMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
@@ -110,6 +111,11 @@ class MainFragment() : Fragment() {
                     bundle.putInt("image",R.drawable.onceinhollywood)
                     bundle.putString("title", resources.getString(R.string.i_dont_know))
                     intent.putExtra("bundle", bundle)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menu_later -> {
+                    val intent = Intent(mainContext, ReturnActivity::class.java)
                     startActivity(intent)
                     true
                 }
