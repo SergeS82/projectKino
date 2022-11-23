@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -120,8 +121,13 @@ class MainFragment() : Fragment() {
                     true
                 }
                 R.id.menu_library ->{
-                    val intent = Intent(Intent.ACTION_WEB_SEARCH)
-                    startActivity(intent)
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type ="text/plain"
+                    if (intent.resolveActivity(mainContext.packageManager) != null){
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(mainContext, "Sorry, no such up", Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
                 else -> true
