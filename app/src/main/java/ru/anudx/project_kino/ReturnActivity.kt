@@ -20,27 +20,33 @@ class ReturnActivity : AppCompatActivity() {
             onBackPressed()
         }
         b.button.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
-            startActivityForResult(intent,0)
+            val intent =
+                Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+            startActivityForResult(intent, 111)
         }
     }
+
     @SuppressLint("Range")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        data?.run {
-            val uri = data.data
-            uri?.run {
-                val cursor = contentResolver.query(uri, null, null, null, null)
-                cursor?.run {
-                    this.moveToFirst()
-                    val name = this.getString(this.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                    this.moveToFirst()
-                    val number = this.getString(cursor.getColumnIndex(Phone.NUMBER))
-                    cursor.close()
-                    val contact = "$name $number"
-                    this@ReturnActivity.b.textView.text = contact
+        when (requestCode) {
+            111 ->
+                data?.run {
+                    val uri = data.data
+                    uri?.run {
+                        val cursor = contentResolver.query(uri, null, null, null, null)
+                        cursor?.run {
+                            this.moveToFirst()
+                            val name =
+                                this.getString(this.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                            this.moveToFirst()
+                            val number = this.getString(cursor.getColumnIndex(Phone.NUMBER))
+                            cursor.close()
+                            val contact = "$name $number"
+                            this@ReturnActivity.b.textView.text = contact
+                        }
+                    }
                 }
-            }
         }
     }
 }
