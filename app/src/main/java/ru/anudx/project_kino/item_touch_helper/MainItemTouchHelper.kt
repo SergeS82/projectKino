@@ -3,7 +3,6 @@ package ru.anudx.project_kino.item_touch_helper
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import ru.anudx.project_kino.adapters.CommonAdapter
-import ru.anudx.project_kino.adapters.DelegateFilmsAdapter
 import java.util.*
 import kotlin.collections.ArrayList
 

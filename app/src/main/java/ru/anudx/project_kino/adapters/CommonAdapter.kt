@@ -1,6 +1,5 @@
 package ru.anudx.project_kino.adapters
 
-import android.content.Context
 import androidx.core.graphics.component1
 import androidx.core.graphics.component2
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +15,7 @@ class CommonAdapter: ListDelegationAdapter<List<InterfaceData>>() {
     var iterator: Int = 0
     private val context: MainActivity by lazy { App.mainContext }
     init {
-        delegatesManager.addDelegate(DelegateFilmsAdapter())
+        delegatesManager.addDelegate(FilmsAdapter())
     }
     fun setItems(items: ArrayList<InterfaceData>?) {
         items?.let {
