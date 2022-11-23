@@ -119,6 +119,11 @@ class MainFragment() : Fragment() {
                     startActivity(intent)
                     true
                 }
+                R.id.menu_library ->{
+                    val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                    startActivity(intent)
+                    true
+                }
                 else -> true
             }
         }
