@@ -14,6 +14,6 @@
     
     <style name="Theme.Project_kino.Transparent">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@color/white_30</item>
+        <item name="android:windowBackground">@color/white_90</item>
     </style>
 </resources>
