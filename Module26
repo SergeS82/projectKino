@@ -11,6 +11,10 @@
 Интент — это объект-сообщение, который мы можем использовать, чтобы запросить действие у другого компонента приложения.
     val intent = Intent(this, AntotherActivity::class.java)
     startActivity(intent)
+    - Implicit/Explicit intents
+        startActivity(Intent(this, OtherActivity::class.java)) - явное указание активити - explicit
+        startActivity(Intent("other")) - Implicit, указывается action - добавляется на активити, таким образом
+            реализуется выбор приложения для обработки пользовательского запроса, например переслать с помощью
 val bundle = Bundle()
     bundle.putString("b1", "I'm string from b1")
     bundle.putInt("b2", 2)
