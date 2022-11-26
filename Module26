@@ -5,6 +5,11 @@
 Как запускать активити в разных режимах;
 Запускать активити через startActivityForResult();
 Как использовать Navigation из Architecture Components.
+Дополнительная информация по модулю:
+    https://developer.android.com/guide/navigation                      -- навигация
+    https://developer.android.com/reference/android/content/Intent      -- intent
+    https://developer.android.com/training/basics/intents/result        -- startActivityForResult()
+    https://developer.android.com/guide/navigation/navigation-getting-started   -- Navigation
 
 Онлайн редактор графов
    https://graphonline.ru/
@@ -61,3 +66,4 @@ Launch modes
     Здесь все то же самое, что и для "singleTop", то есть если активити запущено наверху стека, то повторно создаваться не будет, если нет, то будет создан новый экземпляр активити.
     FLAG_ACTIVITY_CLEAR_TOP
     Если активити уже запущено где-то в стеке, то при вызове этого активити он уничтожит все активити, созданные после этого активити, и станет первым в списке. То есть у нас есть стек А-Б-В-Г, активити Б у нас запущено с этим флагом повторно, и стек унас теперь будет А-Б. Из манифеста такое поведение недоступно.
+
