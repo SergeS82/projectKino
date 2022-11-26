@@ -5,15 +5,17 @@ import androidx.core.graphics.component1
 import androidx.core.graphics.component2
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import ru.anudx.project_kino.App
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.FilmsData
 
-class CommonAdapter(val context: Context): ListDelegationAdapter<List<InterfaceData>>() {
+class CommonAdapter: ListDelegationAdapter<List<InterfaceData>>() {
     val dataManager = DataManager()
     var iterator: Int = 0
+    private val context = App.mainContext
     init {
-        delegatesManager.addDelegate(DelegateFilmsAdapter(context))
+        delegatesManager.addDelegate(DelegateFilmsAdapter())
     }
     fun setItems(items: ArrayList<InterfaceData>?) {
         items?.let {

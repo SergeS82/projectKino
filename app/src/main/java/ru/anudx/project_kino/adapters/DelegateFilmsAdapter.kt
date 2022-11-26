@@ -1,20 +1,19 @@
 package ru.anudx.project_kino.adapters
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
-import ru.anudx.project_kino.DetailsFilmActivity
-import ru.anudx.project_kino.R
+import ru.anudx.project_kino.*
 import ru.anudx.project_kino.databinding.FilmsItemBinding
+import ru.anudx.project_kino.fragments.DetailFragment
 import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.FilmsData
 
-class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<FilmsData, InterfaceData, DelegateFilmsAdapter.ViewHolder>() {
+class DelegateFilmsAdapter: AbsListItemAdapterDelegate<FilmsData, InterfaceData, DelegateFilmsAdapter.ViewHolder>() {
+    private val context = App.mainContext
 
     inner class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView), InterfaceViewHolder{
         val image = b.imageView
@@ -31,11 +30,18 @@ class DelegateFilmsAdapter(val context: Context): AbsListItemAdapterDelegate<Fil
                     title.text = item.title
                     description.text = item.description
                     itemView.setOnClickListener {
-                        val intent = Intent(context, DetailsFilmActivity()::class.java)
                         val bundle = Bundle()
-                        bundle.putParcelable("film", item)
-                        intent.putExtras(bundle)
-                        context.startActivity(intent)
+                        //bundle.putString("TitleToDetail", title.text.toString())
+                        //bundle.putInt("ImageToDetail", item.image)
+                        bundle.putParcelable("FilmsData",item)
+                        val fragment = DetailFragment()
+                        fragment.arguments = bundle
+                        (context as MainActivity).supportFragmentManager
+                            .beginTransaction()
+                            .add(R.id.main_layout, fragment, context.resources.getString(R.string.detail_fragment_tag))
+                            .addSharedElement(image,"transaction_poster")
+                            .addToBackStack(null)
+                            .commit()
                     }
                 }
             }
