@@ -13,9 +13,10 @@ import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.model.FilmsData
 
 class DelegateFilmsAdapter: AbsListItemAdapterDelegate<FilmsData, InterfaceData, DelegateFilmsAdapter.ViewHolder>() {
-    private val context = App.mainContext
+    private val context: MainActivity by lazy {  App.mainContext }
 
-    inner class ViewHolder(itemView: View, b: FilmsItemBinding): RecyclerView.ViewHolder(itemView), InterfaceViewHolder{
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), InterfaceViewHolder{
+        val b = FilmsItemBinding.bind(itemView)
         val image = b.imageView
         val title = b.title
         val description = b.description
@@ -50,8 +51,7 @@ class DelegateFilmsAdapter: AbsListItemAdapterDelegate<FilmsData, InterfaceData,
 
     override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
         val item = LayoutInflater.from(context).inflate(R.layout.films_item,parent,false)
-        val b = FilmsItemBinding.bind(item)
-        return ViewHolder(item, b)
+        return ViewHolder(item)
     }
 
     override fun onBindViewHolder(item: FilmsData, holder: ViewHolder, payloads: MutableList<Any>) {
