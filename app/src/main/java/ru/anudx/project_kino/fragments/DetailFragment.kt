@@ -17,7 +17,9 @@ class DetailFragment() : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var b: FragmentDetailBinding
+    val b: FragmentDetailBinding by lazy {
+        FragmentDetailBinding.bind(this.requireView())
+    }
     private val mainContext = App.mainContext
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +31,14 @@ class DetailFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_detail, container, false)
-        b = FragmentDetailBinding.bind(view)
+        return inflater.inflate(R.layout.fragment_detail, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
         val data = arguments?.getParcelable<FilmsData>("FilmsData")
         b.toolbarLayout.title = data?.title
         data?.image?.let { b.image.setImageResource(it) }
-        return view
     }
 
     companion object {

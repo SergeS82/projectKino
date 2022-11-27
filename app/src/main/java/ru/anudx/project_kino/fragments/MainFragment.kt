@@ -22,7 +22,9 @@ import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
 class MainFragment() : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var b: FragmentMainBinding
+    val b: FragmentMainBinding by lazy {
+        FragmentMainBinding.bind(this.requireView())
+    }
     private val mainContext = App.mainContext
     init {
         Log.d("main_fragment", "init")
@@ -38,10 +40,12 @@ class MainFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d("main_fragment", "onCreateView")
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
-        b = FragmentMainBinding.bind(view)
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
         initRecyclerView()
-        return view
     }
 
     companion object {
