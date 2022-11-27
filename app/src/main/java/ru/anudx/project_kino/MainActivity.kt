@@ -10,15 +10,16 @@ import ru.anudx.project_kino.fragments.MainFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var b: ActivityMainBinding
+    private val b: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
     private var timeBackPressed = 0L
-    companion object{
+    companion object {
         val TIME_INTERVAL_2S = 2000
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
         App.mainContext = this
         supportFragmentManager
