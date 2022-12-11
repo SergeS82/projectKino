@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         App.mainContext = this
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.main_layout, MainFragment(), resources.getString(R.string.main_fragment_tag))
+            .add(R.id.fragment_container, MainFragment(), resources.getString(R.string.main_fragment_tag))
             .commit()
     }
     override fun onBackPressed() {

@@ -39,7 +39,7 @@ class DelegateFilmsAdapter: AbsListItemAdapterDelegate<FilmsData, InterfaceData,
                         fragment.arguments = bundle
                         (context as MainActivity).supportFragmentManager
                             .beginTransaction()
-                            .add(R.id.main_layout, fragment, context.resources.getString(R.string.detail_fragment_tag))
+                            .add(R.id.fragment_container, fragment, context.resources.getString(R.string.detail_fragment_tag))
                             .addSharedElement(image,"transaction_poster")
                             .addToBackStack(null)
                             .commit()
