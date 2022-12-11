@@ -51,5 +51,6 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
 
 }
