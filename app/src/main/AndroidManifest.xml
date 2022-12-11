@@ -11,19 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Project_kino"
+        android:theme="@style/Project_kino.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".ReturnContentActivity"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ReturnActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Project_kino.Transparent">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -38,7 +30,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_kino">
+            android:theme="@style/Project_kino.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
