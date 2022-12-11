@@ -15,7 +15,7 @@ class CommonAdapter: ListDelegationAdapter<List<InterfaceData>>() {
     var iterator: Int = 0
     private val context: MainActivity by lazy { App.mainContext }
     init {
-        delegatesManager.addDelegate(FilmsAdapter())
+        delegatesManager.addDelegate(DelegateFilmsAdapter())
     }
     fun setItems(items: ArrayList<InterfaceData>?) {
         items?.let {

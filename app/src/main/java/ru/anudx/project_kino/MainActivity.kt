@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.fragments.MainFragment
+import ru.anudx.project_kino.study.StudyUserInputFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         App.mainContext = this
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, MainFragment(), resources.getString(R.string.main_fragment_tag))
+            .add(R.id.fragment_container, StudyUserInputFragment(), resources.getString(R.string.main_fragment_tag))
             .commit()
     }
     override fun onBackPressed() {
