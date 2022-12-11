@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.anudx.project_kino.R
+import ru.anudx.project_kino.databinding.FragmentDetailBinding
 import ru.anudx.project_kino.databinding.FragmentStudyUserInputBinding
 
 class StudyUserInputFragment : Fragment() {
-    val b: FragmentStudyUserInputBinding
+    val b by lazy {
+        FragmentStudyUserInputBinding.bind(this.requireView())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
