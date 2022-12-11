@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.anudx.project_kino.R
-import ru.anudx.project_kino.databinding.FragmentDetailBinding
 import ru.anudx.project_kino.databinding.FragmentStudyUserInputBinding
 
 class StudyUserInputFragment : Fragment() {
