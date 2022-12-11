@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".study.StudyUserInputFragment">
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone_number_l"
         style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,9 +14,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_phone_number"
+            android:inputType="phone"
             android:digits="0123456789+-()"
             android:textColorHint="#546E7A" />
     </com.google.android.material.textfield.TextInputLayout>
