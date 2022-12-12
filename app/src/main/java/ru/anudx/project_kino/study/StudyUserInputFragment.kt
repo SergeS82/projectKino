@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import ru.anudx.project_kino.App
+import ru.anudx.project_kino.MainActivity
 import ru.anudx.project_kino.R
 import ru.anudx.project_kino.databinding.FragmentStudyUserInputBinding
 
@@ -35,18 +36,18 @@ class StudyUserInputFragment : Fragment() {
         b.phoneNumber.addTextChangedListener(listener)
         b.phoneNumber.onFocusChangeListener = listener
         //
-
-        val menuItem = App.mainContext.menu?.findItem(R.id.study_search)
+        val activity = requireActivity() as MainActivity
+        val menuItem = activity.menu.findItem(R.id.study_search)
         val searchView = menuItem?.actionView as SearchView
-        val list = App.mainContext.list
+        val list = activity.list
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (list.contains(query)) {
                     b.textViewRes.text = "In list"
-                    b.textViewRes.setTextColor(ContextCompat.getColor(App.mainContext, R.color.Green))
+                    b.textViewRes.setTextColor(ContextCompat.getColor(activity, R.color.Green))
                 } else {
                     b.textViewRes.text = "Not in list"
-                    b.textViewRes.setTextColor(ContextCompat.getColor(App.mainContext, R.color.Red))
+                    b.textViewRes.setTextColor(ContextCompat.getColor(activity, R.color.Red))
                 }
                 return false
             }
@@ -54,6 +55,7 @@ class StudyUserInputFragment : Fragment() {
                 return false
             }
         })
+
 
     }
 

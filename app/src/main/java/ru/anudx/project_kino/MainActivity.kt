@@ -2,8 +2,10 @@ package ru.anudx.project_kino
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.SimpleCursorAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainBinding
@@ -14,6 +16,7 @@ import ru.anudx.project_kino.study.StudyUserInputFragment
 class MainActivity : AppCompatActivity() {
     val list = mutableListOf<String>()
     lateinit var menu: Menu
+    lateinit var menuAdapter: SimpleCursorAdapter
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val b: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
