@@ -16,7 +16,6 @@ import ru.anudx.project_kino.study.StudyUserInputFragment
 class MainActivity : AppCompatActivity() {
     val list = mutableListOf<String>()
     lateinit var menu: Menu
-    lateinit var menuAdapter: SimpleCursorAdapter
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val b: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(b.root)
         App.mainContext = this
         for (i in 0 .. 9) {
-            list.add("item$i")
+            list.add("${i}item$i")
         }
     }
     override fun onBackPressed() {
