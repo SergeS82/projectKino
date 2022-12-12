@@ -41,16 +41,16 @@ class StudyUserInputFragment : Fragment() {
         val list = App.mainContext.list
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (list.contains(newText)) {
+                if (list.contains(query)) {
                     b.textViewRes.text = "In list"
                     b.textViewRes.setTextColor(ContextCompat.getColor(App.mainContext, R.color.Green))
                 } else {
                     b.textViewRes.text = "Not in list"
                     b.textViewRes.setTextColor(ContextCompat.getColor(App.mainContext, R.color.Red))
                 }
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
         })
