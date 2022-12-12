@@ -1,15 +1,19 @@
 package ru.anudx.project_kino
 
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.fragments.MainFragment
 import ru.anudx.project_kino.study.StudyUserInputFragment
 
+@Suppress("UNREACHABLE_CODE")
 class MainActivity : AppCompatActivity() {
-
+    val list = mutableListOf<String>()
+    lateinit var menu: Menu
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val b: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -23,10 +27,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(b.root)
         App.mainContext = this
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, StudyUserInputFragment(), resources.getString(R.string.main_fragment_tag))
-            .commit()
+        for (i in 0 .. 9) {
+            list.add("item$i")
+        }
     }
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 0) {
@@ -40,5 +43,14 @@ class MainActivity : AppCompatActivity() {
         }else{
             super.onBackPressed()
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.study_search_menu, menu)
+        menu?.let { this.menu = it }
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container, StudyUserInputFragment(), resources.getString(R.string.main_fragment_tag))
+            .commit()
+        return super.onCreateOptionsMenu(menu)
     }
 }
