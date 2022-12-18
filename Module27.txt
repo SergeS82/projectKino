@@ -8,3 +8,5 @@
 -   Что такое InputFilter;
 -   Как использовать ToolbarSearchView;
 -   Для чего нужен ClipboardManager.
+
+Refactor → Remove Unused Resources.

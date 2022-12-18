@@ -65,7 +65,6 @@ class MainFragment() : Fragment() {
                     }) as ArrayList<InterfaceData>)
                     return true
                 }
-
             }
         )
     }
