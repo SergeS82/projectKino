@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.fragments.MainFragment
+import ru.anudx.project_kino.study.StudyClipBoardFragment
 import ru.anudx.project_kino.study.StudyUserInputFragment
 
 @Suppress("UNREACHABLE_CODE")
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.double_press_for_exit, Toast.LENGTH_SHORT).show()
             }
             timeBackPressed = System.currentTimeMillis()
-        }else{
+        } else {
             super.onBackPressed()
         }
     }
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         menu?.let { this.menu = it }
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, StudyUserInputFragment(), resources.getString(R.string.main_fragment_tag))
+            .add(R.id.fragment_container, StudyClipBoardFragment(), resources.getString(R.string.main_fragment_tag))
             .commit()
         return super.onCreateOptionsMenu(menu)
     }
