@@ -30,9 +30,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(b.root)
         App.mainContext = this
-        for (i in 0 .. 9) {
-            list.add("${i}item$i")
-        }
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container, MainFragment(), resources.getString(R.string.main_fragment_tag))
+            .commit()
     }
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 0) {
@@ -46,14 +47,5 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
-    }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.study_search_menu, menu)
-        menu?.let { this.menu = it }
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, StudyClipBoardFragment(), resources.getString(R.string.main_fragment_tag))
-            .commit()
-        return super.onCreateOptionsMenu(menu)
     }
 }

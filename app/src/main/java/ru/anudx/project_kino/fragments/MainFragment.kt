@@ -41,11 +41,15 @@ class MainFragment() : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initNavigation()
+        b.searchView.setOnClickListener {
+            b.searchView.isIconified = false
+        }
     }
+
 
     companion object {
         @JvmStatic
