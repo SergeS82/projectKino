@@ -10,14 +10,18 @@ import androidx.appcompat.widget.SearchView
 import androidx.navigation.ui.AppBarConfiguration
 import ru.anudx.project_kino.databinding.ActivityMainBinding
 import ru.anudx.project_kino.fragments.MainFragment
+import ru.anudx.project_kino.model.FilmsData
+import ru.anudx.project_kino.model.InterfaceData
 import ru.anudx.project_kino.study.StudyClipBoardFragment
 import ru.anudx.project_kino.study.StudyUserInputFragment
+import java.sql.DatabaseMetaData
 
 @Suppress("UNREACHABLE_CODE")
 class MainActivity : AppCompatActivity() {
     val list = mutableListOf<String>()
     lateinit var menu: Menu
     private lateinit var appBarConfiguration: AppBarConfiguration
+    val dataBase = mutableListOf<InterfaceData>() as ArrayList<InterfaceData>
     private val b: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(b.root)
+        initDataBase()
         App.mainContext = this
         supportFragmentManager
             .beginTransaction()
@@ -46,6 +51,21 @@ class MainActivity : AppCompatActivity() {
             timeBackPressed = System.currentTimeMillis()
         } else {
             super.onBackPressed()
+        }
+    }
+    fun initDataBase(){
+        dataBase.clear()
+        val images = arrayListOf(
+            R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
+            , R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
+            , R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight
+            , R.drawable.killbillv1, R.drawable.onceinhollywood, R.drawable.pulpfiction, R.drawable.thehatefulleight)
+        val titles = arrayListOf<String>()
+        val descriptions = arrayListOf<String>()
+        titles.addAll(resources.getStringArray(R.array.films_title))
+        descriptions.addAll(resources.getStringArray(R.array.films_description))
+        titles.forEachIndexed { i, s ->
+            dataBase.add(FilmsData(i,titles[i],descriptions[i],images[i],i))
         }
     }
 }

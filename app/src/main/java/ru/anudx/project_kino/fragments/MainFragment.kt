@@ -7,28 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
-import ru.anudx.project_kino.App
-import ru.anudx.project_kino.DetailActivity
-import ru.anudx.project_kino.R
-import ru.anudx.project_kino.ReturnActivity
+import ru.anudx.project_kino.*
 import ru.anudx.project_kino.adapters.CommonAdapter
 import ru.anudx.project_kino.databinding.FragmentMainBinding
 import ru.anudx.project_kino.decorations.RecyclerDecoration
 import ru.anudx.project_kino.item_touch_helper.MainItemTouchHelper
+import ru.anudx.project_kino.model.FilmsData
+import ru.anudx.project_kino.model.InterfaceData
 
+@Suppress("UNCHECKED_CAST")
 class MainFragment() : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     val b: FragmentMainBinding by lazy {
         FragmentMainBinding.bind(this.requireView())
     }
-    private val mainContext = App.mainContext
+    private val mainContext by lazy { requireActivity() as MainActivity}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +46,29 @@ class MainFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initNavigation()
+        val adapter = b.filmsRecycler.adapter as CommonAdapter
         b.searchView.setOnClickListener {
             b.searchView.isIconified = false
         }
+        b.searchView.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+                override fun onQueryTextChange(newText: String): Boolean {
+                    if (newText.isEmpty()) {
+                        adapter.dataManager.setData(mainContext.dataBase)
+                        return true
+                    }
+                    adapter.dataManager.setData((mainContext.dataBase.filterIsInstance<FilmsData>().filter {
+                        it.title?.lowercase()?.contains(newText.lowercase())?:false
+                    }) as ArrayList<InterfaceData>)
+                    return true
+                }
+
+            }
+        )
     }
-
-
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -59,7 +77,7 @@ class MainFragment() : Fragment() {
     }
     private fun initRecyclerView() {
         val adapter = CommonAdapter()
-        adapter.dataManager.init()
+        adapter.dataManager.setData(mainContext.dataBase)
         with(b.filmsRecycler) {
             layoutManager = TestLinearLayoutManager(mainContext);
             itemAnimator = DefaultItemAnimator()
