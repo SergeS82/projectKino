@@ -22,8 +22,11 @@ class StudyClipBoardFragment : Fragment() {
     val clipboardManager by lazy {
         mainContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
-    val clipDescription = ClipDescription("Text", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN))
-
+    val clipDescription = ClipDescription("Text1", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN))
+//    MIMETYPE_TEXT_PLAIN — передаем текст;
+//    MIMETYPE_TEXT_HTML — передаем HTML;
+//    MIMETYPE_TEXT_INTENT — передаем интент;
+//    MIMETYPE_TEXT_URILIST — передаем URI.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -40,9 +43,13 @@ class StudyClipBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         b.editTextTest.setOnLongClickListener {
             val clipboardData = ClipData(clipDescription, ClipData.Item(b.editTextTest.text))
-            clipboardData.addItem(ClipData.Item("qwerty"))
+            clipboardData.addItem(ClipData.Item("123456"))
             clipboardManager.setPrimaryClip(clipboardData)
             Toast.makeText(mainContext, "Text put to buffer", Toast.LENGTH_SHORT).show()
+            true
+        }
+        b.textView2.setOnLongClickListener {
+            b.textView2.text = clipboardManager.primaryClip?.getItemAt(1)?.text
             true
         }
     }
