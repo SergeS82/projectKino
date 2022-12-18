@@ -1,6 +1,7 @@
 package ru.anudx.project_kino.study
 
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
@@ -18,9 +19,10 @@ class StudyClipBoardFragment : Fragment() {
         FragmentStudyClipBoardBinding.bind(requireView())
     }
     private val mainContext by lazy {  requireActivity() as MainActivity }
-    val clipboardManager by lazy{
+    val clipboardManager by lazy {
         mainContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
+    val clipDescription = ClipDescription("Text", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,8 @@ class StudyClipBoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         b.editTextTest.setOnLongClickListener {
-            val clipboardData = ClipData.newPlainText("Text", b.editTextTest.text)
+            val clipboardData = ClipData(clipDescription, ClipData.Item(b.editTextTest.text))
+            clipboardData.addItem(ClipData.Item("qwerty"))
             clipboardManager.setPrimaryClip(clipboardData)
             Toast.makeText(mainContext, "Text put to buffer", Toast.LENGTH_SHORT).show()
             true
