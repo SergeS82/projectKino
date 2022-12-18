@@ -1,0 +1,10 @@
+Модуль 27:
+-   Как организован ввод на мобильных устройствах;
+-   Какие типы клавиатур могут быть;
+-   Что такое InputMethodService;
+-   Что такое EditText;
+-   Что такое TextInputLayout;
+-   Как EditText взаимодействует с экранной клавиатурой;
+-   Что такое InputFilter;
+-   Как использовать ToolbarSearchView;
+-   Для чего нужен ClipboardManager.
